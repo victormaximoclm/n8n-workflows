@@ -10,58 +10,55 @@
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
-      "position": [
-        352,
-        0
-      ],
-      "id": "39a6c269-c7d1-48d9-9f9a-e7d862e5722e",
+      "position": [352, 0],
+      "id": "39a6c269-c7d1-48d9-9f9a-REDACTED",
       "name": "Webhook",
-      "webhookId": "6522146a-d6f9-4f05-8542-5825f0ee7aa5"
+      "webhookId": "WEBHOOK_ID"
     },
     {
       "parameters": {
         "assignments": {
           "assignments": [
             {
-              "id": "3d58114f-794e-431a-9de3-1db69fd628b2",
+              "id": "3d58114f-REDACTED",
               "name": "nome_paciente",
               "value": "={{ $json.name }}",
               "type": "string"
             },
             {
-              "id": "6333bb79-a707-4c93-8ac5-50116490beb1",
+              "id": "6333bb79-REDACTED",
               "name": "diarias_auto",
-              "value": "={{ $json.custom_fields.find(f => f.id === \"52c26b58-cb1c-4e02-911a-06a81def4da4\")?.value }}",
+              "value": "={{ $json.custom_fields.find(f => f.id === \"FIELD_ID_DIARIAS\")?.value }}",
               "type": "string"
             },
             {
-              "id": "0a4dc63b-fde7-4ed4-b370-1598c91c8c1a",
+              "id": "0a4dc63b-REDACTED",
               "name": "numero_guia",
-              "value": "={{ $json.custom_fields.find(f => f.id === \"7042e061-cc5f-4a85-96d2-03726c0a6db5\")?.value }}",
+              "value": "={{ $json.custom_fields.find(f => f.id === \"FIELD_ID_GUIA\")?.value }}",
               "type": "string"
             },
             {
-              "id": "9d612119-005f-4b02-8e5c-5339a5953bd4",
+              "id": "9d612119-REDACTED",
               "name": "Convênio",
-              "value": "={{\n  $json.custom_fields\n    .find(f => f.id === \"a68a2df2-bd44-43ab-9dea-08610c89f6ac\")\n    ?.type_config.options\n    .find(opt => opt.orderindex ===\n      $json.custom_fields.find(f => f.id === \"a68a2df2-bd44-43ab-9dea-08610c89f6ac\")?.value\n    )?.name\n}}",
+              "value": "={{ $json.custom_fields.find(f => f.id === \"FIELD_ID_CONVENIO\")?.value }}",
               "type": "string"
             },
             {
-              "id": "a065d56e-a83e-4dc7-85ad-389ae2173882",
+              "id": "a065d56e-REDACTED",
               "name": "=Serviços",
-              "value": "={{ $json.custom_fields.find(f => f.id === \"07c1a02b-d58f-4b48-908e-c6e0ae0148a5\")?.value }}",
+              "value": "={{ $json.custom_fields.find(f => f.id === \"FIELD_ID_SERVICOS\")?.value }}",
               "type": "array"
             },
             {
-              "id": "503c381d-6514-470c-9af8-09f9b8d9988e",
+              "id": "503c381d-REDACTED",
               "name": "Opçoes de Serviço",
-              "value": "={{ $json.custom_fields.find(f => f.id === \"07c1a02b-d58f-4b48-908e-c6e0ae0148a5\")?.type_config.options }}",
+              "value": "={{ $json.custom_fields.find(f => f.id === \"FIELD_ID_SERVICOS\")?.type_config.options }}",
               "type": "string"
             },
             {
-              "id": "707fd0cd-ecee-4268-8507-4913dacaa94f",
+              "id": "707fd0cd-REDACTED",
               "name": "Services_identified",
-              "value": "={{\n  (() => {\n    const field = $json.custom_fields.find(f => f.id === \"07c1a02b-d58f-4b48-908e-c6e0ae0148a5\");\n    if (!field?.value || !field.type_config?.options) return \"\";\n    \n    // field.value é um array de IDs\n    return field.value\n      .map(val => field.type_config.options.find(opt => opt.id === val)?.label)\n      .filter(Boolean)\n      .join(\", \");      // junta em string separada por vírgula\n  })()\n}}",
+              "value": "={{ \"SERVICES_LIST\" }}",
               "type": "string"
             }
           ]
@@ -70,11 +67,8 @@
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [
-        768,
-        0
-      ],
-      "id": "8a9b7d10-b6ca-47af-880d-9d0b128abd61",
+      "position": [768, 0],
+      "id": "8a9b7d10-REDACTED",
       "name": "Organiza Info",
       "alwaysOutputData": true
     },
@@ -83,26 +77,21 @@
         "operation": "copy",
         "fileId": {
           "__rl": true,
-          "value": "1cjEZ3tYJN0JwUNrVIa1Yi5_W_ZnqRtDnw307K9ooYt4",
-          "mode": "list",
-          "cachedResultName": "MODELOS DE FREQUENCIA2026",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1cjEZ3tYJN0JwUNrVIa1Yi5_W_ZnqRtDnw307K9ooYt4/edit?usp=drivesdk"
+          "value": "GOOGLE_DRIVE_TEMPLATE_ID",
+          "mode": "list"
         },
         "name": "=Frequência - {{ $json.nome_paciente.split(\" \")[0] }}",
         "options": {}
       },
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
-      "position": [
-        928,
-        0
-      ],
-      "id": "3f7a4870-a6b5-4152-a136-f08d5e5914cb",
+      "position": [928, 0],
+      "id": "3f7a4870-REDACTED",
       "name": "Copy file",
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "nkWjD2mgHXObDvAn",
-          "name": "IS Novo"
+          "id": "GOOGLE_CREDENTIAL_ID",
+          "name": "GOOGLE_CREDENTIAL"
         }
       }
     },
@@ -114,21 +103,18 @@
         "nodeCredentialType": "googleSheetsOAuth2Api",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"valueInputOption\": \"USER_ENTERED\",\n  \"data\": [\n    {\n      \"range\": \"MODELO HD PACIENTE!B3\",\n      \"values\": [[\"{{ $('Organiza Info').item.json.nome_paciente }}\"]]\n    },\n    {\n      \"range\": \"MODELO HD PACIENTE!B4\",\n      \"values\": [[\"{{ $('Organiza Info').item.json.Services_identified }}\"]]\n    },\n    {\n      \"range\": \"MODELO HD PACIENTE!B5\",\n      \"values\": [[\"{{ $('Organiza Info').item.json['Convênio'] }}\"]]\n    },\n    {\n      \"range\": \"MODELO HD PACIENTE!B6\",\n      \"values\": [[\"{{ $('Organiza Info').item.json.numero_guia }}\"]]\n    },\n    {\n      \"range\": \"MODELO HD PACIENTE!F6\",\n      \"values\": [[\"{{ $('Organiza Info').item.json.diarias_auto }}\"]]\n    },\n    {\n      \"range\": \"MODELO HD PACIENTE!B7\",\n      \"values\": [[\"{{ $today.setLocale(\"pt-BR\").format(\"MMMM\").charAt(0).toUpperCase() + $today.setLocale(\"pt-BR\").format(\"MMMM\").slice(1) }}\"]]\n    },\n    {\n      \"range\": \"MODELO HD PACIENTE!E7\",\n      \"values\": [[\"{{ $today.format(\"yyyy\") }}\"]]\n    }\n    \n  ]\n} \n\n\n\n\n",
+        "jsonBody": "{ \"valueInputOption\": \"USER_ENTERED\", \"data\": [] }",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
-      "position": [
-        1136,
-        0
-      ],
-      "id": "8052e3ee-ff25-4e3c-a333-3314af1489e9",
+      "position": [1136, 0],
+      "id": "8052e3ee-REDACTED",
       "name": "Atualiza File Presenças",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "osxzxdwScBT1WZSW",
-          "name": "IS email novo"
+          "id": "GOOGLE_SHEETS_CREDENTIAL_ID",
+          "name": "GOOGLE_SHEETS_CREDENTIAL"
         }
       }
     },
@@ -139,30 +125,17 @@
           "__rl": true,
           "mode": "id",
           "value": "={{ $('Copy file').item.json.id }}"
-        },
-        "options": {
-          "googleFileConversion": {
-            "conversion": {
-              "docsToFormat": "application/pdf",
-              "drawingsToFormat": "application/pdf",
-              "slidesToFormat": "application/pdf",
-              "sheetsToFormat": "application/pdf"
-            }
-          }
         }
       },
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
-      "position": [
-        1344,
-        0
-      ],
-      "id": "8ffcbffb-6a5b-467c-86a2-f0cea570087f",
+      "position": [1344, 0],
+      "id": "8ffcbffb-REDACTED",
       "name": "Download file",
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "nkWjD2mgHXObDvAn",
-          "name": "IS Novo"
+          "id": "GOOGLE_CREDENTIAL_ID",
+          "name": "GOOGLE_CREDENTIAL"
         }
       }
     },
@@ -173,61 +146,36 @@
           "__rl": true,
           "value": "={{ $('Copy file').item.json.id }}",
           "mode": "id"
-        },
-        "options": {
-          "deletePermanently": true
         }
       },
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
-      "position": [
-        1728,
-        0
-      ],
-      "id": "e83c15f8-e5a0-4414-865b-ffcf96179e25",
+      "position": [1728, 0],
+      "id": "e83c15f8-REDACTED",
       "name": "Delete a file",
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "nkWjD2mgHXObDvAn",
-          "name": "IS Novo"
+          "id": "GOOGLE_CREDENTIAL_ID",
+          "name": "GOOGLE_CREDENTIAL"
         }
       }
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://api.clickup.com/api/v2/task/{{ $node['Webhook'].json.body.payload.id }}/attachment ",
+        "url": "=https://api.clickup.com/api/v2/task/{{ $node['Webhook'].json.body.payload.id }}/attachment",
         "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "clickUpOAuth2Api",
-        "sendBody": true,
-        "contentType": "multipart-form-data",
-        "bodyParameters": {
-          "parameters": [
-            {
-              "parameterType": "formBinaryData",
-              "name": "attachment",
-              "inputDataFieldName": "data"
-            }
-          ]
-        },
-        "options": {}
+        "nodeCredentialType": "clickUpOAuth2Api"
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
-      "position": [
-        1520,
-        0
-      ],
-      "id": "fc911031-025e-4076-b8cb-48cc0d74ba0f",
+      "position": [1520, 0],
+      "id": "fc911031-REDACTED",
       "name": "Anexa a tarefa",
       "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "osxzxdwScBT1WZSW",
-          "name": "IS email novo"
-        },
         "clickUpOAuth2Api": {
-          "id": "furydvZAXG5lUlHU",
-          "name": "IS/HPSM"
+          "id": "CLICKUP_CREDENTIAL_ID",
+          "name": "CLICKUP_CREDENTIAL"
         }
       }
     },
@@ -239,16 +187,13 @@
       },
       "type": "n8n-nodes-base.clickUp",
       "typeVersion": 1,
-      "position": [
-        592,
-        0
-      ],
-      "id": "4fc21faf-a968-4f19-a802-308aacbbe79d",
+      "position": [592, 0],
+      "id": "4fc21faf-REDACTED",
       "name": "Pega Tarefa",
       "credentials": {
         "clickUpOAuth2Api": {
-          "id": "furydvZAXG5lUlHU",
-          "name": "IS/HPSM"
+          "id": "CLICKUP_CREDENTIAL_ID",
+          "name": "CLICKUP_CREDENTIAL"
         }
       }
     },
@@ -257,517 +202,50 @@
         "assignments": {
           "assignments": [
             {
-              "id": "953a6540-6671-44d9-b300-7784e015e907",
+              "id": "953a6540-REDACTED",
               "name": "Response",
               "value": "Success",
               "type": "string"
             }
           ]
-        },
-        "options": {}
+        }
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [
-        1936,
-        0
-      ],
-      "id": "da007273-9717-4616-bdfe-6e9a42ab320b",
+      "position": [1936, 0],
+      "id": "da007273-REDACTED",
       "name": "Edit Fields"
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "n8n.simplificagest.com",
-            "user-agent": "axios/0.24.0",
-            "content-length": "6157",
-            "accept": "application/json, text/plain, */*",
-            "content-type": "application/json",
-            "traceparent": "00-69d5017a000000007b3fedc7fb6aeaca-7b3fedc7fb6aeaca-00",
-            "tracestate": "dd=t.tid:69d5017a00000000;t.dm:-3;s:-1;p:7b3fedc7fb6aeaca",
-            "x-datadog-parent-id": "8881078433370270410",
-            "x-datadog-sampling-priority": "-1",
-            "x-datadog-tags": "_dd.p.tid=69d5017a00000000",
-            "x-datadog-trace-id": "8881078433370270410",
-            "x-forwarded-for": "54.188.221.30",
-            "x-forwarded-host": "n8n.simplificagest.com",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "fb4b1dc5bf1a",
-            "x-real-ip": "54.188.221.30",
-            "accept-encoding": "gzip"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "auto_id": "577c628f-a312-495a-ad01-24e806227c08:main",
-            "trigger_id": "bfdd231f-8d2b-4df2-9851-978c0d3ef30d",
-            "date": "2026-04-07T13:07:06.394Z",
-            "payload": {
-              "id": "868j1fw0g",
-              "name": "Maria Vitoria Silva Santana",
-              "content": "{\"ops\":[{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-ffce36b1-d15e-419f-a4ef-6df08df79453\"}}]}",
-              "lower_name": null,
-              "html_content": null,
-              "text_content": "",
-              "content_size": "none",
-              "sprint_points": null,
-              "coverimage": null,
-              "priority": null,
-              "personal_priority": [],
-              "draft_uuid": null,
-              "custom_id": null,
-              "custom_type": null,
-              "status_id": "sc901113010855_mLVmqVcT",
-              "workspace_id": "9011131078",
-              "subcategory": "901113010855",
-              "direct_parent": null,
-              "root_parent": null,
-              "merged_to": null,
-              "subtask_sort": null,
-              "subtask_sort_dir": null,
-              "reccurence": {
-                "v1": {
-                  "recurring": false,
-                  "recur_type": null,
-                  "recur_next": null,
-                  "recur_new_status": null,
-                  "recur_due_date": null,
-                  "recur_data": null,
-                  "recur_rule": null,
-                  "recur_task": "868j1fw0g",
-                  "recur_skip_missed": false,
-                  "recur_on_status": null,
-                  "recur_on": null,
-                  "recur_copy_original": false,
-                  "recur_time": false,
-                  "recur_immediately": false,
-                  "recur_until": null,
-                  "recur_dst": null,
-                  "recur_tz_offset": null,
-                  "recur_tz": null,
-                  "recur_daily": false,
-                  "recur_ignore_today": false
-                },
-                "v2": {
-                  "set_time": false,
-                  "create_new_task": false,
-                  "periodically": false,
-                  "simple_settings": false,
-                  "ignore_weekends": false,
-                  "recur_on_schedule": false,
-                  "reschedule_on_due_date_change": false
-                }
-              },
-              "privacy": {
-                "private": false,
-                "public": false,
-                "public_token": null,
-                "public_permission_level": null,
-                "public_fields": null,
-                "public_share_expires_on": null,
-                "public_sharing": false,
-                "seo_optimized": false,
-                "made_public_by": null,
-                "made_public_time": null
-              },
-              "templating": {
-                "template": false,
-                "original_subcat": "901110231866",
-                "template_name": null,
-                "team_id": null,
-                "template_field_ids": null,
-                "permanent_template_id": null,
-                "visibility": null
-              },
-              "states": {
-                "is_archived": false,
-                "is_deleted": false,
-                "is_encrypted": false
-              },
-              "time_mgmt": {
-                "is_summary_task": false,
-                "start_date": null,
-                "start_date_time": false,
-                "date_closed": null,
-                "date_created": "1774611222789",
-                "date_updated": "1775567224835",
-                "due_date": null,
-                "due_date_time": false,
-                "date_deleted": null,
-                "date_active": null,
-                "date_unstarted": null,
-                "date_done": null,
-                "date_delegated": null,
-                "time_estimate": null,
-                "time_estimate_string": null,
-                "time_spent": null,
-                "sent_due_date_notif": false,
-                "duration": {},
-                "duration_is_elapsed": false
-              },
-              "checklists": [],
-              "ownership": {
-                "created_by_email": null,
-                "owner": -1,
-                "creator": -1,
-                "deleted_by": null,
-                "source": "template",
-                "delegator": null,
-                "form_id": null,
-                "merged_to": null
-              },
-              "subtask_ids": [],
-              "tags": [],
-              "fields": [
-                {
-                  "field_id": "07c1a02b-d58f-4b48-908e-c6e0ae0148a5",
-                  "value": [
-                    "79461641-eac2-4ec8-88c8-26378274ef35",
-                    "a7c1d0f0-90fd-4b5d-a612-a0b4db47f215"
-                  ],
-                  "value_options": null,
-                  "value_deleted": false,
-                  "value_richtext": null,
-                  "reasoning": null,
-                  "task_id": "868j1fw0g",
-                  "type": 12
-                },
-                {
-                  "field_id": "0f7134af-342d-45c1-9aa2-385f7fa021c1",
-                  "value": 20,
-                  "value_options": null,
-                  "value_deleted": false,
-                  "value_richtext": null,
-                  "reasoning": null,
-                  "task_id": "868j1fw0g",
-                  "type": 7
-                },
-                {
-                  "field_id": "30078103-9168-4433-a777-bfd096dfffd6",
-                  "value": 1774422000000,
-                  "value_options": {
-                    "time": false
-                  },
-                  "value_deleted": false,
-                  "value_richtext": null,
-                  "reasoning": null,
-                  "task_id": "868j1fw0g",
-                  "type": 4
-                },
-                {
-                  "field_id": "52c26b58-cb1c-4e02-911a-06a81def4da4",
-                  "value": 20,
-                  "value_options": null,
-                  "value_deleted": false,
-                  "value_richtext": null,
-                  "reasoning": null,
-                  "task_id": "868j1fw0g",
-                  "type": 7
-                },
-                {
-                  "field_id": "7042e061-cc5f-4a85-96d2-03726c0a6db5",
-                  "value": "A723689",
-                  "value_options": null,
-                  "value_deleted": false,
-                  "value_richtext": null,
-                  "reasoning": null,
-                  "task_id": "868j1fw0g",
-                  "type": 15
-                },
-                {
-                  "field_id": "79c84209-55bb-4953-bfbc-d405bc610b69",
-                  "value": 1777014000000,
-                  "value_options": {
-                    "time": false
-                  },
-                  "value_deleted": false,
-                  "value_richtext": null,
-                  "reasoning": null,
-                  "task_id": "868j1fw0g",
-                  "type": 4
-                },
-                {
-                  "field_id": "7a8c41d2-089c-4c30-80bc-f7ca80c454b2",
-                  "value": [
-                    "ee7b849d-b221-4933-8266-6dec8a11c6b6.pdf"
-                  ],
-                  "value_options": null,
-                  "value_deleted": false,
-                  "value_richtext": null,
-                  "reasoning": null,
-                  "task_id": "868j1fw0g",
-                  "type": 16
-                },
-                {
-                  "field_id": "916696a3-454f-4803-89d3-1dbcd4e0bcee",
-                  "value": 1779087600000,
-                  "value_options": {
-                    "time": false
-                  },
-                  "value_deleted": false,
-                  "value_richtext": null,
-                  "reasoning": null,
-                  "task_id": "868j1fw0g",
-                  "type": 4
-                },
-                {
-                  "field_id": "970b9922-c857-472e-ba27-7048ba5dfadc",
-                  "value": "26cb7540-12bb-4138-a1fa-738bf4ad64d5",
-                  "value_options": null,
-                  "value_deleted": false,
-                  "value_richtext": null,
-                  "reasoning": null,
-                  "task_id": "868j1fw0g",
-                  "type": 1
-                },
-                {
-                  "field_id": "a68a2df2-bd44-43ab-9dea-08610c89f6ac",
-                  "value": "83b97f2a-7d50-482b-b95e-eca21d4ce421",
-                  "value_options": null,
-                  "value_deleted": false,
-                  "value_richtext": null,
-                  "reasoning": null,
-                  "task_id": "868j1fw0g",
-                  "type": 1
-                },
-                {
-                  "field_id": "a7261ff1-4bfa-4193-bd4b-73e14dfb3db8",
-                  "value": 1779087600000,
-                  "value_options": {
-                    "time": false
-                  },
-                  "value_deleted": false,
-                  "value_richtext": null,
-                  "reasoning": null,
-                  "task_id": "868j1fw0g",
-                  "type": 4
-                },
-                {
-                  "field_id": "d0578cb5-7149-4fd5-835c-9dd1b61fbaaf",
-                  "value": 1775567224835,
-                  "value_options": null,
-                  "value_deleted": false,
-                  "value_richtext": null,
-                  "reasoning": null,
-                  "task_id": "868j1fw0g",
-                  "type": 23
-                },
-                {
-                  "field_id": "fcb67290-1cae-40f1-a38f-306a57971dd8",
-                  "value": "90642d9e-8331-4ba4-94d3-97d893658b7c",
-                  "value_options": null,
-                  "value_deleted": false,
-                  "value_richtext": null,
-                  "reasoning": null,
-                  "task_id": "868j1fw0g",
-                  "type": 1
-                }
-              ],
-              "lists": [
-                {
-                  "list_id": "901113010855",
-                  "type": "home"
-                }
-              ],
-              "users": [
-                {
-                  "userid": 75390810,
-                  "type": "watcher"
-                },
-                {
-                  "userid": 75492745,
-                  "type": "watcher"
-                },
-                {
-                  "userid": 87400756,
-                  "type": "watcher"
-                },
-                {
-                  "userid": 87400785,
-                  "type": "watcher"
-                },
-                {
-                  "userid": 194630229,
-                  "type": "watcher"
-                },
-                {
-                  "userid": -1,
-                  "type": "owner"
-                },
-                {
-                  "userid": -1,
-                  "type": "creator"
-                }
-              ],
-              "groups": [],
-              "related_tasks": [
-                {
-                  "task_id": "868j1fw0m",
-                  "type": "linked"
-                },
-                {
-                  "task_id": "868j1fw0b",
-                  "type": "linked"
-                },
-                {
-                  "task_id": "868hytww8",
-                  "type": "linked"
-                }
-              ],
-              "related_tasks_count": {
-                "dependsOn": 0,
-                "dependedBy": 0
-              },
-              "attachments": [
-                {
-                  "attachment_id": "58c2eb8b-5fdd-48a3-9629-9afbd4119886.pdf",
-                  "type": "linked"
-                },
-                {
-                  "attachment_id": "5da11e4b-5eb3-4a6d-8913-91a743048bd5.pdf",
-                  "type": "linked"
-                },
-                {
-                  "attachment_id": "9859b80b-b9de-4059-bd29-b0dd89fe2c30.png",
-                  "type": "linked"
-                },
-                {
-                  "attachment_id": "ee7b849d-b221-4933-8266-6dec8a11c6b6.pdf",
-                  "field_id": "7a8c41d2-089c-4c30-80bc-f7ca80c454b2",
-                  "type": "linked"
-                }
-              ],
-              "docs": [],
-              "_version_vector": {
-                "workspace_id": 9011131078,
-                "object_type": "task",
-                "object_id": "868j1fw0g",
-                "vector": [
-                  {
-                    "master_id": 12,
-                    "version": 1775567224858000,
-                    "deleted": false
-                  }
-                ]
-              }
-            }
-          },
-          "webhookUrl": "https://n8n.simplificagest.com/webhook/imprimeCheckin",
-          "executionMode": "production"
-        }
-      }
-    ]
-  },
   "connections": {
     "Webhook": {
-      "main": [
-        [
-          {
-            "node": "Pega Tarefa",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Organiza Info": {
-      "main": [
-        [
-          {
-            "node": "Copy file",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Copy file": {
-      "main": [
-        [
-          {
-            "node": "Atualiza File Presenças",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Atualiza File Presenças": {
-      "main": [
-        [
-          {
-            "node": "Download file",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Download file": {
-      "main": [
-        [
-          {
-            "node": "Anexa a tarefa",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Anexa a tarefa": {
-      "main": [
-        [
-          {
-            "node": "Delete a file",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
+      "main": [[{ "node": "Pega Tarefa", "type": "main", "index": 0 }]]
     },
     "Pega Tarefa": {
-      "main": [
-        [
-          {
-            "node": "Organiza Info",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
+      "main": [[{ "node": "Organiza Info", "type": "main", "index": 0 }]]
+    },
+    "Organiza Info": {
+      "main": [[{ "node": "Copy file", "type": "main", "index": 0 }]]
+    },
+    "Copy file": {
+      "main": [[{ "node": "Atualiza File Presenças", "type": "main", "index": 0 }]]
+    },
+    "Atualiza File Presenças": {
+      "main": [[{ "node": "Download file", "type": "main", "index": 0 }]]
+    },
+    "Download file": {
+      "main": [[{ "node": "Anexa a tarefa", "type": "main", "index": 0 }]]
+    },
+    "Anexa a tarefa": {
+      "main": [[{ "node": "Delete a file", "type": "main", "index": 0 }]]
     },
     "Delete a file": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
+      "main": [[{ "node": "Edit Fields", "type": "main", "index": 0 }]]
     }
   },
   "active": true,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "3889b67b-ba1a-47b1-8edb-d912bec668d5",
-  "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "ed448110c2f52335930f4a47b55f0143ece4c7ed5b8e212395558525801fe931"
-  },
-  "id": "DbBWl13RzsV5KjTv",
-  "tags": [
-    {
-      "updatedAt": "2025-07-26T18:07:48.515Z",
-      "createdAt": "2025-07-26T18:07:48.515Z",
-      "id": "W4Rm24E5nSpi4ue9",
-      "name": "IS"
-    }
-  ]
+  "id": "WORKFLOW_ID"
 }
