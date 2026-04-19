@@ -30,7 +30,7 @@
             {
               "id": "4d6eddf8-f033-4b2c-8e18-cebaa90f9d73",
               "leftValue": "={{ $json.body.data.key.remoteJidAlt.slice(0,12) }}",
-              "rightValue": "558488011812",
+              "rightValue": "{{$env.ALLOWED_PHONE}}",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -40,7 +40,7 @@
             {
               "id": "6330a190-522c-483e-ab12-955682239447",
               "leftValue": "={{ $json.body.data.key.remoteJid.slice(0,12) }}",
-              "rightValue": "558488011812",
+              "rightValue": "{{$env.ALLOWED_PHONE}}",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -50,7 +50,7 @@
             {
               "id": "11744135-2ab3-4cd7-8c0e-7d1dcb238623",
               "leftValue": "={{ $json.body.data.key.remoteJidAlt.slice(0,12) }}",
-              "rightValue": "558481862093",
+              "rightValue": "{{$env.ALLOWED_PHONE}}",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -60,7 +60,7 @@
             {
               "id": "a1a03d23-df34-43b4-9c04-ba2fafb8e0e4",
               "leftValue": "={{ $json.body.data.key.remoteJid.slice(0,12) }}",
-              "rightValue": "558481862093",
+              "rightValue": "{{$env.ALLOWED_PHONE}}",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -70,7 +70,7 @@
             {
               "id": "eebe22b1-9fcc-4dfd-acb5-208074210024",
               "leftValue": "={{ $json.body.data.key.remoteJid.slice(0,12) }}",
-              "rightValue": "558699975595",
+              "rightValue": "{{$env.ALLOWED_PHONE}}",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -80,7 +80,7 @@
             {
               "id": "fd338700-8874-4ba4-835a-ab393dc6db20",
               "leftValue": "={{ $json.body.data.key.remoteJidAlt.slice(0,12) }}",
-              "rightValue": "558699975595",
+              "rightValue": "{{$env.ALLOWED_PHONE}}",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -90,7 +90,7 @@
             {
               "id": "d793777b-335e-4ba5-8fae-bc0032f8c60e",
               "leftValue": "={{ $json.body.data.key.remoteJidAlt.slice(0,12) }}",
-              "rightValue": "558699874736",
+              "rightValue": "{{$env.ALLOWED_PHONE}}",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -100,7 +100,7 @@
             {
               "id": "6489038d-3150-4cbe-b1fa-a1a301f14885",
               "leftValue": "={{ $json.body.data.key.remoteJid.slice(0,12) }}",
-              "rightValue": "558699874736",
+              "rightValue": "{{$env.ALLOWED_PHONE}}",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -124,7 +124,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com//message/sendText/{{$node['Variaveis'].json.instance}}",
+        "url": "={{$env.EVOLUTION_URL}}/message/sendText/{{$node['Variaveis'].json.instance}}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -183,46 +183,6 @@
             {
               "id": "mensagem_1",
               "displayName": "mensagem_1",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": true
-            },
-            {
-              "id": "mensagem_2",
-              "displayName": "mensagem_2",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": true
-            },
-            {
-              "id": "mensagem_3",
-              "displayName": "mensagem_3",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": true
-            },
-            {
-              "id": "mensagem_4",
-              "displayName": "mensagem_4",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": true
-            },
-            {
-              "id": "mensagem_5",
-              "displayName": "mensagem_5",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -311,13 +271,13 @@
             {
               "id": "5463d283-b818-40b5-814a-31fc56e68b72",
               "name": "instance",
-              "value": "simplicio_teste",
+              "value": "{{$env.EVOLUTION_INSTANCE}}",
               "type": "string"
             },
             {
               "id": "7c6ccdee-90e7-43d9-bb12-c6287dbe0ffa",
               "name": "apikey",
-              "value": "429683C4C977415CAAFCCE10F7D57E11",
+              "value": "{{$env.EVOLUTION_API_KEY}}",
               "type": "string"
             },
             {
@@ -341,7 +301,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Função auxiliar para gerar número aleatório entre min e max\nfunction rand(min, max) {\n  return Math.random() * (max - min) + min;\n}\n\n// Mensagem base (você pode trocar pelo campo do JSON, ex: $json.message)\nconst msg = $input.first().json.body.data.message.conversation\n\n// Calcula tempo de digitação humana simulado\nconst len = msg.length;\n\n// Tempo por caractere (0.12 a 0.30 s)\nconst tPerChar = rand(0.12, 0.30);\n\n// Tempo adicional de leitura (0.5 a 2 s)\nconst readDelay = rand(0.5, 2.0);\n\n// Variação aleatória (-1 a +2 s)\nconst jitter = rand(-1.0, 2.0);\n\n// Tempo total em segundos\nlet secs = len * tPerChar + readDelay + jitter;\n\n// Limites práticos (1s a 25s)\nif (secs < 1) secs = 1;\nif (secs > 25) secs = 25;\n\n// Arredonda com uma casa decimal (mais realista)\nsecs = Math.round(secs * 10) / 10;\n\n// Retorna o valor em segundos\nreturn [{ wait_seconds: secs }];\n"
+        "jsCode": "function rand(min, max) {\n  return Math.random() * (max - min) + min;\n}\nconst msg = $input.first().json.body.data.message.conversation\nconst len = msg.length;\nconst tPerChar = rand(0.12, 0.30);\nconst readDelay = rand(0.5, 2.0);\nconst jitter = rand(-1.0, 2.0);\nlet secs = len * tPerChar + readDelay + jitter;\nif (secs < 1) secs = 1;\nif (secs > 25) secs = 25;\nsecs = Math.round(secs * 10) / 10;\nreturn [{ wait_seconds: secs }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -491,7 +451,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Variaveis'].json.instance}}",
+        "url": "={{$env.EVOLUTION_URL}}/message/sendText/{{$node['Variaveis'].json.instance}}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -751,84 +711,6 @@
               "type": "string"
             },
             {
-              "id": "b427be43-5ade-4ab1-9d52-c26f639e5dfa",
-              "name": "mensagem_1",
-              "value": "={{ $('Conversa').item.json.mensagem_1 }}",
-              "type": "string"
-            },
-            {
-              "id": "a39883e7-42f6-41eb-9c80-953b9f2cca0f",
-              "name": "mensagem_2",
-              "value": "={{ $('Conversa').item.json.mensagem_2 }}",
-              "type": "string"
-            },
-            {
-              "id": "f45a4ec4-15ed-4522-bb85-b25ba339a4b0",
-              "name": "mensagem_3",
-              "value": "={{ $('Conversa').item.json.mensagem_3 }}",
-              "type": "string"
-            },
-            {
-              "id": "0b2a1a73-c4ce-4a58-888c-4d0ecc72c93b",
-              "name": "mensagem_4",
-              "value": "={{ $('Conversa').item.json.mensagem_4 }}",
-              "type": "string"
-            },
-            {
-              "id": "3b31e8c9-400e-4725-b302-1a11515e717e",
-              "name": "mensagem_5",
-              "value": "={{ $('Conversa').item.json.mensagem_5 }}",
-              "type": "string"
-            },
-            {
-              "id": "4b72bbd5-5513-4787-8000-ec14b4798333",
-              "name": "data_modificacao",
-              "value": "={{ $('Conversa').item.json.data_modificacao }}",
-              "type": "string"
-            },
-            {
-              "id": "d120cb6f-4ba1-4bd1-b101-4a5d7b49240d",
-              "name": "etapa",
-              "value": "={{ $('Conversa').item.json.etapa }}",
-              "type": "string"
-            },
-            {
-              "id": "a92d7f30-50e5-4ce7-9e49-4877be0bfd6e",
-              "name": "mensagem_6",
-              "value": "={{ $('Conversa').item.json.mensagem_6 }}",
-              "type": "string"
-            },
-            {
-              "id": "48d0678f-6daf-4b87-94ce-dd4a1af5e70b",
-              "name": "mensagem_7",
-              "value": "={{ $('Conversa').item.json.mensagem_7 }}",
-              "type": "string"
-            },
-            {
-              "id": "e55a7689-9ab3-428c-95a9-f121505610be",
-              "name": "mensagem_8",
-              "value": "={{ $('Conversa').item.json.mensagem_8 }}",
-              "type": "string"
-            },
-            {
-              "id": "569bf2de-d3a5-4276-992c-ecbd622b2908",
-              "name": "mensagem_9",
-              "value": "={{ $('Conversa').item.json.mensagem_9 }}",
-              "type": "string"
-            },
-            {
-              "id": "feeeab6a-162f-4188-8bea-43796f43e368",
-              "name": "mensagem_12",
-              "value": "={{ $('Conversa').item.json.mensagem_12 }}",
-              "type": "string"
-            },
-            {
-              "id": "5318c2b7-d693-4753-8540-2a05e3565dba",
-              "name": "mensagem_13",
-              "value": "={{ $('Conversa').item.json.mensagem_13 }}",
-              "type": "string"
-            },
-            {
               "id": "c2c538da-eb78-479d-899b-477114a65f61",
               "name": "=respostaWpp",
               "value": "={{ $('Webhook').item.json.body.data.message.conversation }}",
@@ -970,143 +852,6 @@
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "4ca298b9-5afb-49fd-ace2-bc3f3212d1c4",
-              "name": "data",
-              "value": "={{ $('Aggregate2').item.json.data }}",
-              "type": "array"
-            },
-            {
-              "id": "a2c0c83e-1ff5-48ee-8135-c7ecf8eec071",
-              "name": "instance",
-              "value": "={{ $('Variaveis').item.json.instance }}",
-              "type": "string"
-            },
-            {
-              "id": "77898dc7-24c6-4be0-8488-29b6481b0e9c",
-              "name": "apikey",
-              "value": "={{ $('Variaveis').item.json.apikey }}",
-              "type": "string"
-            },
-            {
-              "id": "24359c9c-3fa4-480d-8217-04c78b3de10a",
-              "name": "wait",
-              "value": "={{ $('Variaveis').item.json.wait }}",
-              "type": "string"
-            },
-            {
-              "id": "9ac15f43-8918-4e3a-b6a2-ae76748a5999",
-              "name": "conversa_id",
-              "value": "={{ $('Conversa').item.json.conversa_id }}",
-              "type": "string"
-            },
-            {
-              "id": "b427be43-5ade-4ab1-9d52-c26f639e5dfa",
-              "name": "mensagem_1",
-              "value": "={{ $('Conversa').item.json.mensagem_1 }}",
-              "type": "string"
-            },
-            {
-              "id": "a39883e7-42f6-41eb-9c80-953b9f2cca0f",
-              "name": "mensagem_2",
-              "value": "={{ $('Conversa').item.json.mensagem_2 }}",
-              "type": "string"
-            },
-            {
-              "id": "f45a4ec4-15ed-4522-bb85-b25ba339a4b0",
-              "name": "mensagem_3",
-              "value": "={{ $('Conversa').item.json.mensagem_3 }}",
-              "type": "string"
-            },
-            {
-              "id": "0b2a1a73-c4ce-4a58-888c-4d0ecc72c93b",
-              "name": "mensagem_4",
-              "value": "={{ $('Conversa').item.json.mensagem_4 }}",
-              "type": "string"
-            },
-            {
-              "id": "3b31e8c9-400e-4725-b302-1a11515e717e",
-              "name": "mensagem_5",
-              "value": "={{ $('Conversa').item.json.mensagem_5 }}",
-              "type": "string"
-            },
-            {
-              "id": "4b72bbd5-5513-4787-8000-ec14b4798333",
-              "name": "data_modificacao",
-              "value": "={{ $('Conversa').item.json.data_modificacao }}",
-              "type": "string"
-            },
-            {
-              "id": "d120cb6f-4ba1-4bd1-b101-4a5d7b49240d",
-              "name": "etapa",
-              "value": "={{ $('Conversa').item.json.etapa }}",
-              "type": "string"
-            },
-            {
-              "id": "a92d7f30-50e5-4ce7-9e49-4877be0bfd6e",
-              "name": "mensagem_6",
-              "value": "={{ $('Conversa').item.json.mensagem_6 }}",
-              "type": "string"
-            },
-            {
-              "id": "48d0678f-6daf-4b87-94ce-dd4a1af5e70b",
-              "name": "mensagem_7",
-              "value": "={{ $('Conversa').item.json.mensagem_7 }}",
-              "type": "string"
-            },
-            {
-              "id": "e55a7689-9ab3-428c-95a9-f121505610be",
-              "name": "mensagem_8",
-              "value": "={{ $('Conversa').item.json.mensagem_8 }}",
-              "type": "string"
-            },
-            {
-              "id": "569bf2de-d3a5-4276-992c-ecbd622b2908",
-              "name": "mensagem_9",
-              "value": "={{ $('Conversa').item.json.mensagem_9 }}",
-              "type": "string"
-            },
-            {
-              "id": "feeeab6a-162f-4188-8bea-43796f43e368",
-              "name": "mensagem_12",
-              "value": "={{ $('Conversa').item.json.mensagem_12 }}",
-              "type": "string"
-            },
-            {
-              "id": "5318c2b7-d693-4753-8540-2a05e3565dba",
-              "name": "mensagem_13",
-              "value": "={{ $('Conversa').item.json.mensagem_13 }}",
-              "type": "string"
-            },
-            {
-              "id": "c2c538da-eb78-479d-899b-477114a65f61",
-              "name": "=respostaWpp",
-              "value": "={{ $('Webhook').item.json.body.data.message.conversation }}",
-              "type": "string"
-            },
-            {
-              "id": "d2cf910c-7e85-4017-93a3-06e30b15bd2a",
-              "name": "remoteJid",
-              "value": "={{ $('Webhook').item.json.body.data.key.remoteJid }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        3648,
-        48
-      ],
-      "id": "26cc1efa-1c22-491b-9ea1-cb7c748d84e8",
-      "name": "Edit Fields2"
-    },
-    {
-      "parameters": {
         "operation": "select",
         "schema": {
           "__rl": true,
@@ -1140,7 +885,7 @@
     },
     {
       "parameters": {
-        "jsCode": "let resposta = ($json[\"resposta\"] ?? \"\").toString().trim();\nconst validator = $json[\"validator\"];\n\nlet valido = false;\nlet erro = \"\";\n\n\n// ----------------- Validações por tipo -----------------\nswitch (validator) {\n    case \"options_1_2_3\":\n        if (!resposta) {\n            valido = false;\n            erro = \"A resposta não pode ficar em branco.\";\n        } else if (![\"1\", \"2\", \"3\"].includes(resposta)) {\n            valido = false;\n            erro = \"Por favor, digite uma opção válida: 1, 2 ou 3.\";\n        } else {\n            resposta = resposta;\n            valido = true;\n        }\n        break;\n\n    default:\n        if (!resposta) {\n            valido = false;\n            erro = \"A resposta não pode ficar em branco.\";\n        } else {\n            valido = true;\n        }\n        break;\n}\n\nreturn { json: { resposta, valido, erro } };"
+        "jsCode": "let resposta = ($json[\"resposta\"] ?? \"\").toString().trim();\nconst validator = $json[\"validator\"];\nlet valido = false;\nlet erro = \"\";\nswitch (validator) {\n    case \"options_1_2_3\":\n        if (!resposta) { valido = false; erro = \"A resposta não pode ficar em branco.\"; }\n        else if (![\"1\", \"2\", \"3\"].includes(resposta)) { valido = false; erro = \"Por favor, digite uma opção válida: 1, 2 ou 3.\"; }\n        else { resposta = resposta; valido = true; }\n        break;\n    default:\n        if (!resposta) { valido = false; erro = \"A resposta não pode ficar em branco.\"; }\n        else { valido = true; }\n        break;\n}\nreturn { json: { resposta, valido, erro } };"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -1150,140 +895,6 @@
       ],
       "id": "22b0d328-51d9-4624-b2ac-f4c93c8e6a82",
       "name": "Verifica resposta Inicial"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "a2c0c83e-1ff5-48ee-8135-c7ecf8eec071",
-              "name": "instance",
-              "value": "={{ $('Variaveis').item.json.instance }}",
-              "type": "string"
-            },
-            {
-              "id": "77898dc7-24c6-4be0-8488-29b6481b0e9c",
-              "name": "apikey",
-              "value": "={{ $('Variaveis').item.json.apikey }}",
-              "type": "string"
-            },
-            {
-              "id": "24359c9c-3fa4-480d-8217-04c78b3de10a",
-              "name": "wait",
-              "value": "={{ $('Variaveis').item.json.wait }}",
-              "type": "string"
-            },
-            {
-              "id": "9ac15f43-8918-4e3a-b6a2-ae76748a5999",
-              "name": "conversa_id",
-              "value": "={{ $('Conversa').item.json.conversa_id }}",
-              "type": "string"
-            },
-            {
-              "id": "b427be43-5ade-4ab1-9d52-c26f639e5dfa",
-              "name": "mensagem_1",
-              "value": "={{ $('Conversa').item.json.mensagem_1 }}",
-              "type": "string"
-            },
-            {
-              "id": "a39883e7-42f6-41eb-9c80-953b9f2cca0f",
-              "name": "mensagem_2",
-              "value": "={{ $('Conversa').item.json.mensagem_2 }}",
-              "type": "string"
-            },
-            {
-              "id": "f45a4ec4-15ed-4522-bb85-b25ba339a4b0",
-              "name": "mensagem_3",
-              "value": "={{ $('Conversa').item.json.mensagem_3 }}",
-              "type": "string"
-            },
-            {
-              "id": "0b2a1a73-c4ce-4a58-888c-4d0ecc72c93b",
-              "name": "mensagem_4",
-              "value": "={{ $('Conversa').item.json.mensagem_4 }}",
-              "type": "string"
-            },
-            {
-              "id": "3b31e8c9-400e-4725-b302-1a11515e717e",
-              "name": "mensagem_5",
-              "value": "={{ $('Conversa').item.json.mensagem_5 }}",
-              "type": "string"
-            },
-            {
-              "id": "4b72bbd5-5513-4787-8000-ec14b4798333",
-              "name": "data_modificacao",
-              "value": "={{ $('Conversa').item.json.data_modificacao }}",
-              "type": "string"
-            },
-            {
-              "id": "d120cb6f-4ba1-4bd1-b101-4a5d7b49240d",
-              "name": "etapa",
-              "value": "={{ $('Conversa').item.json.etapa }}",
-              "type": "string"
-            },
-            {
-              "id": "a92d7f30-50e5-4ce7-9e49-4877be0bfd6e",
-              "name": "mensagem_6",
-              "value": "={{ $('Conversa').item.json.mensagem_6 }}",
-              "type": "string"
-            },
-            {
-              "id": "48d0678f-6daf-4b87-94ce-dd4a1af5e70b",
-              "name": "mensagem_7",
-              "value": "={{ $('Conversa').item.json.mensagem_7 }}",
-              "type": "string"
-            },
-            {
-              "id": "e55a7689-9ab3-428c-95a9-f121505610be",
-              "name": "mensagem_8",
-              "value": "={{ $('Conversa').item.json.mensagem_8 }}",
-              "type": "string"
-            },
-            {
-              "id": "569bf2de-d3a5-4276-992c-ecbd622b2908",
-              "name": "mensagem_9",
-              "value": "={{ $('Conversa').item.json.mensagem_9 }}",
-              "type": "string"
-            },
-            {
-              "id": "feeeab6a-162f-4188-8bea-43796f43e368",
-              "name": "mensagem_12",
-              "value": "={{ $('Conversa').item.json.mensagem_12 }}",
-              "type": "string"
-            },
-            {
-              "id": "5318c2b7-d693-4753-8540-2a05e3565dba",
-              "name": "mensagem_13",
-              "value": "={{ $('Conversa').item.json.mensagem_13 }}",
-              "type": "string"
-            },
-            {
-              "id": "c2c538da-eb78-479d-899b-477114a65f61",
-              "name": "=respostaWpp",
-              "value": "={{ $('Webhook').item.json.body.data.message.conversation }}",
-              "type": "string"
-            },
-            {
-              "id": "d2cf910c-7e85-4017-93a3-06e30b15bd2a",
-              "name": "remoteJid",
-              "value": "={{ $('Webhook').item.json.body.data.key.remoteJid }}",
-              "type": "string"
-            }
-          ]
-        },
-        "includeOtherFields": true,
-        "include": "selected",
-        "includeFields": "data",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        3664,
-        -240
-      ],
-      "id": "0918544e-fd74-4f7a-a84f-fb25ea2cec80",
-      "name": "Edit Fields1"
     },
     {
       "parameters": {
@@ -1371,7 +982,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Variaveis'].json.instance}}",
+        "url": "={{$env.EVOLUTION_URL}}/message/sendText/{{$node['Variaveis'].json.instance}}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -1426,93 +1037,6 @@
       "name": "Cria a partir de Orçamento Existente"
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "n8n.simplificagest.com",
-            "user-agent": "axios/1.12.2",
-            "content-length": "920",
-            "accept": "application/json, text/plain, */*",
-            "accept-encoding": "gzip, compress, deflate, br",
-            "content-type": "application/json",
-            "x-forwarded-for": "172.18.0.1",
-            "x-forwarded-host": "n8n.simplificagest.com",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "96a7a30f6704",
-            "x-real-ip": "172.18.0.1"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "event": "messages.upsert",
-            "instance": "simplicio_teste",
-            "data": {
-              "key": {
-                "remoteJid": "120363426212862236@g.us",
-                "fromMe": false,
-                "id": "3AB7AD40888100E06C9B"
-              },
-              "pushName": "16733293265008@lid",
-              "status": "DELIVERY_ACK",
-              "message": {
-                "conversation": "Bom dia!",
-                "messageContextInfo": {
-                  "messageSecret": {
-                    "0": 38,
-                    "1": 37,
-                    "2": 239,
-                    "3": 208,
-                    "4": 96,
-                    "5": 68,
-                    "6": 111,
-                    "7": 42,
-                    "8": 116,
-                    "9": 102,
-                    "10": 19,
-                    "11": 68,
-                    "12": 159,
-                    "13": 185,
-                    "14": 225,
-                    "15": 233,
-                    "16": 105,
-                    "17": 141,
-                    "18": 185,
-                    "19": 142,
-                    "20": 162,
-                    "21": 4,
-                    "22": 9,
-                    "23": 219,
-                    "24": 45,
-                    "25": 12,
-                    "26": 80,
-                    "27": 102,
-                    "28": 93,
-                    "29": 17,
-                    "30": 224,
-                    "31": 31
-                  }
-                }
-              },
-              "messageType": "conversation",
-              "messageTimestamp": 1766418347,
-              "instanceId": "b116c3fb-a497-457b-997d-c99503670c9a",
-              "source": "ios"
-            },
-            "destination": "https://n8n.simplificagest.com/webhook/MsgRecebida",
-            "date_time": "2025-12-22T12:45:56.800Z",
-            "sender": "558496931442@s.whatsapp.net",
-            "server_url": "https://evolution.simplificagest.com",
-            "apikey": "667D3ABE19B2-45AE-B269-215BC4C4929A"
-          },
-          "webhookUrl": "https://n8n.simplificagest.com/webhook/MsgRecebida",
-          "executionMode": "production"
-        }
-      }
-    ]
-  },
   "connections": {
     "Webhook": {
       "main": [
@@ -1856,8 +1380,7 @@
   },
   "versionId": "4c8f467d-bf29-41ff-8f6f-9c85f1a922ac",
   "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "ed448110c2f52335930f4a47b55f0143ece4c7ed5b8e212395558525801fe931"
+    "templateCredsSetupCompleted": true
   },
   "id": "JEcLqeS7vThEEq9K",
   "tags": [
