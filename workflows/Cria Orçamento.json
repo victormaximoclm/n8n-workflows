@@ -23,10 +23,7 @@
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [
-        304,
-        656
-      ],
+      "position": [304, 656],
       "id": "8e3f3d83-9d0a-4467-b796-9ef168f990a8",
       "name": "Validador de resposta"
     },
@@ -57,17 +54,14 @@
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        752,
-        656
-      ],
+      "position": [752, 656],
       "id": "289d2bb0-6e22-46c5-bbc4-99ed52514850",
       "name": "Aceita?"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -84,10 +78,7 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        1472,
-        672
-      ],
+      "position": [1472, 672],
       "id": "42186ef5-1a32-4155-8e1d-d21e1807599f",
       "name": "Resposta Inválida"
     },
@@ -97,13 +88,10 @@
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "position": [
-        1232,
-        672
-      ],
+      "position": [1232, 672],
       "id": "d2ce5dc8-aa47-419d-90e0-93bbf36d9941",
       "name": "Wait",
-      "webhookId": "33f714d7-37d4-41d9-88e1-e30f2db401ef"
+      "webhookId": "YOUR_WEBHOOK_ID"
     },
     {
       "parameters": {
@@ -111,18 +99,15 @@
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "position": [
-        1488,
-        416
-      ],
+      "position": [1488, 416],
       "id": "ab40834f-2ced-46a7-bcc6-917a38d88d5c",
       "name": "Wait1",
-      "webhookId": "33f714d7-37d4-41d9-88e1-e30f2db401ef"
+      "webhookId": "YOUR_WEBHOOK_ID"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -139,10 +124,7 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        1712,
-        416
-      ],
+      "position": [1712, 416],
       "id": "2bdf8a94-2d7f-406c-8063-64630f4a97ac",
       "name": "Envia Pergunta Atual"
     },
@@ -154,15 +136,12 @@
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        1936,
-        416
-      ],
+      "position": [1936, 416],
       "id": "d04c1c50-6aa0-4c36-ae4a-395012b46772",
       "name": "Salva estado da conversa1",
       "credentials": {
         "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
+          "id": "YOUR_POSTGRES_CREDENTIAL_ID",
           "name": "Postgres account"
         }
       }
@@ -173,13 +152,10 @@
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "position": [
-        304,
-        -96
-      ],
+      "position": [304, -96],
       "id": "c0e658d5-da1b-4b77-b887-473f0b053b23",
       "name": "Wait3",
-      "webhookId": "33f714d7-37d4-41d9-88e1-e30f2db401ef"
+      "webhookId": "YOUR_WEBHOOK_ID"
     },
     {
       "parameters": {
@@ -207,17 +183,14 @@
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        2144,
-        416
-      ],
+      "position": [2144, 416],
       "id": "f8ef221a-40ad-449d-8cb1-341e4dae4315",
       "name": "Processar informações?"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -234,27 +207,15 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        544,
-        -96
-      ],
+      "position": [544, -96],
       "id": "47ac8fde-ef55-4b12-b243-0d229cc5c817",
       "name": "Aguarde o Processamento"
     },
     {
       "parameters": {
         "operation": "select",
-        "schema": {
-          "__rl": true,
-          "mode": "list",
-          "value": "public"
-        },
-        "table": {
-          "__rl": true,
-          "value": "conversas_chatbot",
-          "mode": "list",
-          "cachedResultName": "conversas_chatbot"
-        },
+        "schema": {"__rl": true, "mode": "list", "value": "public"},
+        "table": {"__rl": true, "value": "conversas_chatbot", "mode": "list", "cachedResultName": "conversas_chatbot"},
         "where": {
           "values": [
             {
@@ -267,16 +228,13 @@
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        2304,
-        1056
-      ],
+      "position": [2304, 1056],
       "id": "92056864-48fa-46fb-971b-00549618dac2",
       "name": "Pega todas as info.",
       "alwaysOutputData": true,
       "credentials": {
         "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
+          "id": "YOUR_POSTGRES_CREDENTIAL_ID",
           "name": "Postgres account"
         }
       }
@@ -284,25 +242,22 @@
     {
       "parameters": {
         "operation": "getAll",
-        "team": "9010145074",
-        "space": "90144359818",
+        "team": "YOUR_CLICKUP_TEAM_ID",
+        "space": "YOUR_CLICKUP_SPACE_ID",
         "folderless": true,
-        "list": "901413364411",
+        "list": "YOUR_CLICKUP_LIST_ID",
         "filters": {}
       },
       "type": "n8n-nodes-base.clickUp",
       "typeVersion": 1,
-      "position": [
-        2544,
-        1056
-      ],
+      "position": [2544, 1056],
       "id": "0fad48a0-0603-4b74-8ab6-0200cb960773",
       "name": "Get many tasks",
       "alwaysOutputData": true,
       "credentials": {
         "clickUpApi": {
-          "id": "1nWsQIcfIMTR3P0K",
-          "name": "Projetos Simplifica"
+          "id": "YOUR_CLICKUP_CREDENTIAL_ID",
+          "name": "ClickUp Account"
         }
       }
     },
@@ -332,10 +287,7 @@
       },
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
-      "position": [
-        2736,
-        1056
-      ],
+      "position": [2736, 1056],
       "id": "0899e400-453c-40e6-ad1e-c45f97022662",
       "name": "Filter",
       "alwaysOutputData": true
@@ -356,115 +308,87 @@
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [
-        2912,
-        1056
-      ],
+      "position": [2912, 1056],
       "id": "11d8902b-8aad-4e33-a99a-91361a6be437",
       "name": "Organiza"
     },
     {
       "parameters": {
-        "jsCode": "// Pega todos os itens recebidos\nconst items = $input.all();\n\n// Se não houver itens, começa do 001\nif (items.length === 0) {\n  const ano = new Date().getFullYear();\n  const mes = String(new Date().getMonth() + 1).padStart(2, '0');\n  const novoId = `${ano}${mes}-001`;\n  \n  return {\n    json: {\n      novo_id: novoId,\n      sequencial: 1\n    }\n  };\n}\n\n// Extrai todos os números sequenciais dos nomes\nconst sequenciais = items.map(item => {\n  const nome = item.json.name || '';\n  // Regex para pegar o número após o hífen (ex: 202510-002 → 002)\n  const match = nome.match(/(\\d{6})-(\\d{3})/);\n  return match ? parseInt(match[2], 10) : 0;\n});\n\n// Pega o maior número\nconst maiorSequencial = Math.max(...sequenciais);\n\n// Incrementa\nconst novoSequencial = maiorSequencial + 1;\n\n// Formata com zeros à esquerda\nconst ano = new Date().getFullYear();\nconst mes = String(new Date().getMonth() + 1).padStart(2, '0');\nconst sequencialFormatado = String(novoSequencial).padStart(3, '0');\n\nconst novoId = `${ano}${mes}-${sequencialFormatado}`;\n\nreturn {\n  json: {\n    novo_id: novoId,\n    sequencial: novoSequencial,\n    ultimo_id_encontrado: `${ano}${mes}-${String(maiorSequencial).padStart(3, '0')}`\n  }\n};"
+        "jsCode": "// Pega todos os itens recebidos\nconst items = $input.all();\n\n// Se não houver itens, começa do 001\nif (items.length === 0) {\n  const ano = new Date().getFullYear();\n  const mes = String(new Date().getMonth() + 1).padStart(2, '0');\n  const novoId = `${ano}${mes}-001`;\n  \n  return {\n    json: {\n      novo_id: novoId,\n      sequencial: 1\n    }\n  };\n}\n\n// Extrai todos os números sequenciais dos nomes\nconst sequenciais = items.map(item => {\n  const nome = item.json.name || '';\n  const match = nome.match(/(\\d{6})-(\\d{3})/);\n  return match ? parseInt(match[2], 10) : 0;\n});\n\nconst maiorSequencial = Math.max(...sequenciais);\nconst novoSequencial = maiorSequencial + 1;\n\nconst ano = new Date().getFullYear();\nconst mes = String(new Date().getMonth() + 1).padStart(2, '0');\nconst sequencialFormatado = String(novoSequencial).padStart(3, '0');\n\nconst novoId = `${ano}${mes}-${sequencialFormatado}`;\n\nreturn {\n  json: {\n    novo_id: novoId,\n    sequencial: novoSequencial,\n    ultimo_id_encontrado: `${ano}${mes}-${String(maiorSequencial).padStart(3, '0')}`\n  }\n};"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        3152,
-        1056
-      ],
+      "position": [3152, 1056],
       "id": "b1fa8e83-38e2-4a14-8b78-c1d9007ab412",
       "name": "Gera ID novo",
       "executeOnce": true
     },
     {
       "parameters": {
-        "team": "9010145074",
-        "space": "90144359818",
+        "team": "YOUR_CLICKUP_TEAM_ID",
+        "space": "YOUR_CLICKUP_SPACE_ID",
         "folderless": true,
-        "list": "901413364411",
+        "list": "YOUR_CLICKUP_LIST_ID",
         "name": "={{ $node['Pega todas as info.'].json.mensagem_2 }} {{ $json.novo_id }}",
         "additionalFields": {
-          "customFieldsJson": "=[\n  {\n    \"id\": \"55949954-5ae0-4f95-b3f7-9f328ab723d4\",\n    \"value\": \"{{ new Date($now).getTime() - (3 * 60 * 60 * 1000)}}\"\n  }\n] "
+          "customFieldsJson": "=[\n  {\n    \"id\": \"YOUR_CLICKUP_CUSTOM_FIELD_DATE_ID\",\n    \"value\": \"{{ new Date($now).getTime() - (3 * 60 * 60 * 1000)}}\"\n  }\n] "
         }
       },
       "type": "n8n-nodes-base.clickUp",
       "typeVersion": 1,
-      "position": [
-        3424,
-        1056
-      ],
+      "position": [3424, 1056],
       "id": "9a411dd6-ddd2-4899-a958-13d0454d6609",
       "name": "Create a task1",
       "credentials": {
         "clickUpApi": {
-          "id": "1nWsQIcfIMTR3P0K",
-          "name": "Projetos Simplifica"
+          "id": "YOUR_CLICKUP_CREDENTIAL_ID",
+          "name": "ClickUp Account"
         }
       }
     },
     {
       "parameters": {
-        "jsCode": "const info = $('Pega todas as info.').first().json;\nconst mensagem4 = info.mensagem_4;\nconst mensagem6 = info.mensagem_6;\nconst dataBase = new Date(mensagem4.split('/').reverse().join('-'));\nconst normalized = mensagem6?.toLowerCase().normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\");\n\n// Mantido exatamente como você enviou\nconst valor =\n  mensagem6 === \"Básico\"\n    ? parseFloat(info.mensagem_8.replace(/[^\\d.,]/g, \"\").replace(/\\.(?=\\d{3,})/g, \"\").replace(\",\", \".\"))\n    : parseFloat(info.mensagem_8.replace(/[^\\d.,]/g, \"\").replace(/\\.(?=\\d{3,})/g, \"\").replace(\",\", \".\"));\n\nconst idValor =\n  mensagem6 === \"Básico\"\n    ? \"1af39360-dfbd-4e46-a5a6-a5e9273b986b\"\n    : \"24014529-fbe1-4c2a-a32f-f0f37ba84b90\";\n\nconst horarioBruto = info.mensagem_5;\nconst [horaInicialStr, horaFinalStr] = horarioBruto.split(/-|às/).map(s => s.trim());\n\nconst [hIni, mIni] = horaInicialStr.split(':').map(Number);\nconst dataComHoraInicial = new Date(dataBase);\ndataComHoraInicial.setHours(hIni, mIni, 0, 0);\n\nconst [hFim, mFim] = horaFinalStr.split(':').map(Number);\nconst dataComHoraFinal = new Date(dataBase);\ndataComHoraFinal.setHours(hFim, mFim, 0, 0);\n\n// Ajuste fuso\nconst timestampFinal = dataComHoraInicial.getTime() + (3 * 60 * 60 * 1000);\nconst timestampFinal2 = dataComHoraFinal.getTime() + (3 * 60 * 60 * 1000);\n// Função campo (apenas adicionada)\nfunction campo(id, value, isDate = false) {\n  return {\n    id,\n    body: isDate\n      ? { value, value_options: { time: true } }\n      : { value }\n  };\n}\n\n// 🔥 return convertido para campo(), mantendo tudo igual\nreturn [\n  campo(\"3df1b674-de74-4fcd-bb4d-37340e48f2fb\", timestampFinal, true), // DATE\n  campo(\"1ff08e74-88c6-42b8-98da-bb2bbd634155\", timestampFinal2, true),\n\n  campo(\n    \"360e11ab-2bb9-4b00-9cca-4db83fd972bc\",\n    info.mensagem_3\n  ),\n\n  campo(\n    idValor,\n    valor\n  ),\n\n  campo(\n    \"9e6d0d93-f375-4dcf-9ec4-441ceba2ca1f\",\n    info.mensagem_5.replaceAll('-', 'às')\n  ),\n\n  campo(\n    \"dac0519e-6b4f-4b57-9cb1-1e3a1c6a72f2\",\n    normalized === \"basico\"\n      ? [\"3b224d45-a8b4-4286-b68e-bb42a47d7867\"]\n      : normalized === \"avancado\"\n      ? [\"2fafcba9-fd5f-42a3-baba-0b689735a8ba\"]\n      : [\"2fafcba9-fd5f-42a3-baba-0b689735a8ba\", \"3b224d45-a8b4-4286-b68e-bb42a47d7867\"]\n  ),\n\n  campo(\n    \"96c358d0-4271-48b1-a628-c7215ad0801e\",\n    parseFloat(info.mensagem_7.replace(/[^\\d.,]/g, \"\").replace(/\\.(?=\\d{3,})/g, \"\").replace(\",\", \".\"))\n  )\n];\n"
+        "jsCode": "const info = $('Pega todas as info.').first().json;\nconst mensagem4 = info.mensagem_4;\nconst mensagem6 = info.mensagem_6;\nconst dataBase = new Date(mensagem4.split('/').reverse().join('-'));\nconst normalized = mensagem6?.toLowerCase().normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\");\n\nconst valor =\n  mensagem6 === \"Básico\"\n    ? parseFloat(info.mensagem_8.replace(/[^\\d.,]/g, \"\").replace(/\\.(?=\\d{3,})/g, \"\").replace(\",\", \".\"))\n    : parseFloat(info.mensagem_8.replace(/[^\\d.,]/g, \"\").replace(/\\.(?=\\d{3,})/g, \"\").replace(\",\", \".\"));\n\nconst idValor =\n  mensagem6 === \"Básico\"\n    ? \"YOUR_CLICKUP_FIELD_VALOR_BASICO_ID\"\n    : \"YOUR_CLICKUP_FIELD_VALOR_AVANCADO_ID\";\n\nconst horarioBruto = info.mensagem_5;\nconst [horaInicialStr, horaFinalStr] = horarioBruto.split(/-|às/).map(s => s.trim());\n\nconst [hIni, mIni] = horaInicialStr.split(':').map(Number);\nconst dataComHoraInicial = new Date(dataBase);\ndataComHoraInicial.setHours(hIni, mIni, 0, 0);\n\nconst [hFim, mFim] = horaFinalStr.split(':').map(Number);\nconst dataComHoraFinal = new Date(dataBase);\ndataComHoraFinal.setHours(hFim, mFim, 0, 0);\n\nconst timestampFinal = dataComHoraInicial.getTime() + (3 * 60 * 60 * 1000);\nconst timestampFinal2 = dataComHoraFinal.getTime() + (3 * 60 * 60 * 1000);\n\nfunction campo(id, value, isDate = false) {\n  return {\n    id,\n    body: isDate\n      ? { value, value_options: { time: true } }\n      : { value }\n  };\n}\n\nreturn [\n  campo(\"YOUR_CLICKUP_FIELD_DATE_START_ID\", timestampFinal, true),\n  campo(\"YOUR_CLICKUP_FIELD_DATE_END_ID\", timestampFinal2, true),\n  campo(\"YOUR_CLICKUP_FIELD_ENDERECO_ID\", info.mensagem_3),\n  campo(idValor, valor),\n  campo(\"YOUR_CLICKUP_FIELD_HORARIO_ID\", info.mensagem_5.replaceAll('-', 'às')),\n  campo(\n    \"YOUR_CLICKUP_FIELD_TIPO_SUPORTE_ID\",\n    normalized === \"basico\"\n      ? [\"YOUR_CLICKUP_OPTION_BASICO_ID\"]\n      : normalized === \"avancado\"\n      ? [\"YOUR_CLICKUP_OPTION_AVANCADO_ID\"]\n      : [\"YOUR_CLICKUP_OPTION_AVANCADO_ID\", \"YOUR_CLICKUP_OPTION_BASICO_ID\"]\n  ),\n  campo(\n    \"YOUR_CLICKUP_FIELD_VALIDADE_ID\",\n    parseFloat(info.mensagem_7.replace(/[^\\d.,]/g, \"\").replace(/\\.(?=\\d{3,})/g, \"\").replace(\",\", \".\"))\n  )\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        3904,
-        768
-      ],
+      "position": [3904, 768],
       "id": "f433b564-e520-44a7-bb17-40548043de2e",
       "name": "array de campos"
     },
     {
-      "parameters": {
-        "options": {}
-      },
+      "parameters": {"options": {}},
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
-      "position": [
-        4144,
-        1008
-      ],
+      "position": [4144, 1008],
       "id": "05cca13b-fc3b-423d-a481-a55762bd030d",
       "name": "Loop Over Items"
     },
     {
-      "parameters": {
-        "amount": 1
-      },
+      "parameters": {"amount": 1},
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "position": [
-        4624,
-        1152
-      ],
+      "position": [4624, 1152],
       "id": "913dea12-bffc-4578-9a7a-1020a573683f",
       "name": "Delay de Update",
-      "webhookId": "d0a95d18-a6b9-4ad5-bc37-ccd81a8c9c15"
+      "webhookId": "YOUR_WEBHOOK_ID_2"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
-      "position": [
-        4416,
-        992
-      ],
+      "position": [4416, 992],
       "id": "501d1f94-5db0-4702-ab41-f20d8dbc4f05",
       "name": "No Operation, do nothing",
       "executeOnce": true
     },
     {
       "parameters": {
-        "jsCode": "let resposta = ($json[\"resposta\"] ?? \"\").toString().trim();\nconst validator = $json[\"validator\"];\n\nlet valido = false;\nlet erro = \"\";\n\n// Função auxiliar para validar hora hh:mm\nfunction validarHora(horaStr) {\n    const regex = /^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$/;\n    return regex.test(horaStr);\n}\n\n// Colapsa múltiplos espaços em um só\nfunction colapsarEspacos(s) {\n    return s.replace(/\\s+/g, ' ').trim();\n}\n\n// Capitaliza a primeira letra (preserva o resto)\nfunction capitalizarPrimeira(s) {\n    if (!s) return s;\n    return s.charAt(0).toUpperCase() + s.slice(1);\n}\n\n// Corrige plural/singular de palavras comuns\nfunction corrigirPlural(texto) {\n    // Padrão: número + espaço + palavra\n    return texto.replace(/(\\d+)\\s+(dia|ano|mes|mês|hora|minuto|segundo|semana)(?!\\w)/gi, (match, num, palavra) => {\n        const numero = parseInt(num, 10);\n        const palavraLower = palavra.toLowerCase();\n        \n        // Mapeamento de singular/plural\n        const plurais = {\n            'dia': 'dias',\n            'ano': 'anos',\n            'mes': 'meses',\n            'mês': 'meses',\n            'hora': 'horas',\n            'minuto': 'minutos',\n            'segundo': 'segundos',\n            'semana': 'semanas'\n        };\n        \n        if (numero === 1) {\n            // Se for 1, usa singular\n            return `${num} ${palavraLower}`;\n        } else {\n            // Se for maior que 1, usa plural\n            return `${num} ${plurais[palavraLower] || palavra}`;\n        }\n    });\n}\n\n// Valida data dd/MM/yyyy com checagem real de calendário\nfunction validarEPadronizarData(dataStr) {\n    const sep = dataStr.includes('/') ? '/' : (dataStr.includes('-') ? '-' : null);\n    if (!sep) return null;\n    const partes = dataStr.split(sep).map(p => p.trim());\n    if (partes.length !== 3) return null;\n    let [dd, mm, yyyy] = partes;\n    \n    if (!/^\\d{1,2}$/.test(dd) || !/^\\d{1,2}$/.test(mm) || !/^\\d{4}$/.test(yyyy)) return null;\n    \n    const dia = parseInt(dd, 10);\n    const mes = parseInt(mm, 10);\n    const ano = parseInt(yyyy, 10);\n    const dt = new Date(ano, mes - 1, dia);\n    \n    if (dt.getFullYear() !== ano || dt.getMonth() !== (mes - 1) || dt.getDate() !== dia) return null;\n    \n    const dd2 = String(dia).padStart(2, '0');\n    const mm2 = String(mes).padStart(2, '0');\n    return `${dd2}/${mm2}/${ano}`;\n}\n\n// Formata número como moeda em pt-BR (R$ 1.234,56)\nfunction formatarMoedaPTBR(valor) {\n    try {\n        return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });\n    } catch (e) {\n        const valorFormatado = valor.toFixed(2).replace('.', ',').replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n        return 'R$ ' + valorFormatado;\n    }\n}\n\n// Normaliza texto: remove acentos e converte para minúsculas\nfunction normalizarTexto(texto) {\n    return texto.toLowerCase()\n        .normalize(\"NFD\")\n        .replace(/[\\u0300-\\u036f]/g, \"\")\n        .trim();\n}\n\n// ----------------- Validações por tipo -----------------\nswitch (validator) {\n    case \"options_1_2_3\":\n        if (!resposta) {\n            valido = false;\n            erro = \"A resposta não pode ficar em branco.\";\n        } else if (![\"1\", \"2\", \"3\"].includes(resposta)) {\n            valido = false;\n            erro = \"Por favor, digite uma opção válida: 1, 2 ou 3.\";\n        } else {\n            resposta = resposta;\n            valido = true;\n        }\n        break;\n\n    case \"date\":\n        if (!resposta) {\n            valido = false;\n            erro = \"A resposta não pode ficar em branco.\";\n        } else {\n            const pad = validarEPadronizarData(resposta);\n            if (!pad) {\n                valido = false;\n                erro = \"Por favor, digite uma data válida no formato dd/MM/aaaa (exemplo: 25/12/2025).\";\n            } else {\n                resposta = pad;\n                valido = true;\n            }\n        }\n        break;\n\n      case \"time\":\n      case \"datetime\":\n        if (!resposta) {\n            valido = false;\n            erro = \"A resposta não pode ficar em branco.\";\n            break;\n        }\n    \n        const partes = resposta.split('-').map(p => p.trim());\n    \n        if (partes.length !== 2) {\n            valido = false;\n            erro = \"Use o formato hh:mm - hh:mm.\";\n            break;\n        }\n    \n        const [inicio, fim] = partes;\n    \n        if (!validarHora(inicio) || !validarHora(fim)) {\n            valido = false;\n            erro = \"Informe horários válidos no formato hh:mm - hh:mm.\";\n            break;\n        }\n    \n        const [hi, mi] = inicio.split(':').map(Number);\n        const [hf, mf] = fim.split(':').map(Number);\n    \n        const inicioMin = hi * 60 + mi;\n        const fimMin = hf * 60 + mf;\n    \n        // só recusa se forem iguais\n        if (inicioMin === fimMin) {\n            valido = false;\n            erro = \"Os horários não podem ser iguais.\";\n            break;\n        }\n    \n        resposta = `${inicio} - ${fim}`;\n        valido = true;\n        break;\n\n\n    case \"text\":\n    case \"pagamento\":\n        if (!resposta) {\n            valido = false;\n            erro = \"A resposta não pode ficar em branco.\";\n        } else {\n            resposta = colapsarEspacos(resposta);\n            resposta = corrigirPlural(resposta);\n            resposta = capitalizarPrimeira(resposta);\n            valido = true;\n        }\n        break;\n\n    case \"enum:basico,avancado\":\n        {\n            const respostaNormalizada = normalizarTexto(resposta);\n\n            if (!resposta) {\n                valido = false;\n                erro = \"A resposta não pode ficar em branco.\";\n            } else {\n                const temBasico = respostaNormalizada.includes(\"basico\");\n                const temAvancado = respostaNormalizada.includes(\"avancado\");\n                const temAmbos = /ambos|dois|todos|ambas|os 2|2|os dois/.test(respostaNormalizada);\n\n                if (temAmbos || (temBasico && temAvancado)) {\n                    resposta = \"Ambos\";\n                    valido = true;\n                } else if (temBasico) {\n                    resposta = \"Básico\";\n                    valido = true;\n                } else if (temAvancado) {\n                    resposta = \"Avançado\";\n                    valido = true;\n                } else {\n                    if ([\"basico\", \"básico\"].includes(respostaNormalizada)) {\n                        resposta = \"Básico\";\n                        valido = true;\n                    } else if ([\"avancado\", \"avançado\"].includes(respostaNormalizada)) {\n                        resposta = \"Avançado\";\n                        valido = true;\n                    } else {\n                        valido = false;\n                        erro = \"Por favor, escolha entre: Básico, Avançado ou Ambos.\";\n                    }\n                }\n            }\n        }\n        break;\n\n    case \"number\":\n        if (!resposta) {\n            valido = false;\n            erro = \"A resposta não pode ficar em branco.\";\n        } else {\n            const apenas = resposta.replace(/[^\\d.,-]/g, '').replace(/\\s+/g, '');\n            let s = apenas;\n            const virgulas = (s.match(/,/g) || []).length;\n            const pontos = (s.match(/\\./g) || []).length;\n            \n            if (pontos > 1 && virgulas === 0) {\n                s = s.replace(/\\./g, '');\n            } else if (virgulas > 1 && pontos === 0) {\n                s = s.replace(/,/g, '');\n            } else if (pontos >= 1 && virgulas >= 1) {\n                s = s.replace(/\\./g, '');\n                s = s.replace(',', '.');\n            } else {\n                s = s.replace(',', '.');\n            }\n\n            const valor = parseFloat(s);\n            if (isNaN(valor) || valor <= 0) {\n                valido = false;\n                erro = \"Por favor, informe um valor válido maior que zero (exemplo: R$ 120,00 ou 120).\";\n            } else {\n                valido = true;\n                resposta = formatarMoedaPTBR(valor);\n            }\n        }\n        break;\n\n    case \"prazo\":\n        if (!resposta) {\n            valido = false;\n            erro = \"A resposta não pode ficar em branco.\";\n        } else {\n            const match = resposta.match(/(\\d+)/);\n            const dias = match ? parseInt(match[1], 10) : null;\n\n            if (!dias || dias <= 0) {\n                valido = false;\n                erro = \"Por favor, informe a validade em dias (exemplo: 7 dias, 10 ou 15 dias).\";\n            } else {\n                valido = true;\n                resposta = dias === 1 ? \"1 dia\" : `${dias} dias`;\n            }\n        }\n        break;\n\n    default:\n        if (!resposta) {\n            valido = false;\n            erro = \"A resposta não pode ficar em branco.\";\n        } else {\n            resposta = colapsarEspacos(resposta);\n            resposta = corrigirPlural(resposta);\n            resposta = capitalizarPrimeira(resposta);\n            valido = true;\n        }\n        break;\n}\n\nreturn { json: { resposta, valido, erro } };"
+        "jsCode": "let resposta = ($json[\"resposta\"] ?? \"\").toString().trim();\nconst validator = $json[\"validator\"];\n\nlet valido = false;\nlet erro = \"\";\n\nfunction validarHora(horaStr) {\n    const regex = /^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$/;\n    return regex.test(horaStr);\n}\n\nfunction colapsarEspacos(s) {\n    return s.replace(/\\s+/g, ' ').trim();\n}\n\nfunction capitalizarPrimeira(s) {\n    if (!s) return s;\n    return s.charAt(0).toUpperCase() + s.slice(1);\n}\n\nfunction corrigirPlural(texto) {\n    return texto.replace(/(\\d+)\\s+(dia|ano|mes|mês|hora|minuto|segundo|semana)(?!\\w)/gi, (match, num, palavra) => {\n        const numero = parseInt(num, 10);\n        const palavraLower = palavra.toLowerCase();\n        const plurais = {\n            'dia': 'dias', 'ano': 'anos', 'mes': 'meses', 'mês': 'meses',\n            'hora': 'horas', 'minuto': 'minutos', 'segundo': 'segundos', 'semana': 'semanas'\n        };\n        return numero === 1 ? `${num} ${palavraLower}` : `${num} ${plurais[palavraLower] || palavra}`;\n    });\n}\n\nfunction validarEPadronizarData(dataStr) {\n    const sep = dataStr.includes('/') ? '/' : (dataStr.includes('-') ? '-' : null);\n    if (!sep) return null;\n    const partes = dataStr.split(sep).map(p => p.trim());\n    if (partes.length !== 3) return null;\n    let [dd, mm, yyyy] = partes;\n    if (!/^\\d{1,2}$/.test(dd) || !/^\\d{1,2}$/.test(mm) || !/^\\d{4}$/.test(yyyy)) return null;\n    const dia = parseInt(dd, 10);\n    const mes = parseInt(mm, 10);\n    const ano = parseInt(yyyy, 10);\n    const dt = new Date(ano, mes - 1, dia);\n    if (dt.getFullYear() !== ano || dt.getMonth() !== (mes - 1) || dt.getDate() !== dia) return null;\n    return `${String(dia).padStart(2,'0')}/${String(mes).padStart(2,'0')}/${ano}`;\n}\n\nfunction formatarMoedaPTBR(valor) {\n    try {\n        return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });\n    } catch (e) {\n        return 'R$ ' + valor.toFixed(2).replace('.', ',').replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n    }\n}\n\nfunction normalizarTexto(texto) {\n    return texto.toLowerCase().normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\").trim();\n}\n\nswitch (validator) {\n    case \"options_1_2_3\":\n        if (!resposta) { valido = false; erro = \"A resposta não pode ficar em branco.\"; }\n        else if (![\"1\",\"2\",\"3\"].includes(resposta)) { valido = false; erro = \"Por favor, digite uma opção válida: 1, 2 ou 3.\"; }\n        else { valido = true; }\n        break;\n    case \"date\":\n        if (!resposta) { valido = false; erro = \"A resposta não pode ficar em branco.\"; }\n        else {\n            const pad = validarEPadronizarData(resposta);\n            if (!pad) { valido = false; erro = \"Por favor, digite uma data válida no formato dd/MM/aaaa (exemplo: 25/12/2025).\"; }\n            else { resposta = pad; valido = true; }\n        }\n        break;\n    case \"time\":\n    case \"datetime\":\n        if (!resposta) { valido = false; erro = \"A resposta não pode ficar em branco.\"; break; }\n        const partes = resposta.split('-').map(p => p.trim());\n        if (partes.length !== 2) { valido = false; erro = \"Use o formato hh:mm - hh:mm.\"; break; }\n        const [inicio, fim] = partes;\n        if (!validarHora(inicio) || !validarHora(fim)) { valido = false; erro = \"Informe horários válidos no formato hh:mm - hh:mm.\"; break; }\n        const [hi, mi] = inicio.split(':').map(Number);\n        const [hf, mf] = fim.split(':').map(Number);\n        if ((hi * 60 + mi) === (hf * 60 + mf)) { valido = false; erro = \"Os horários não podem ser iguais.\"; break; }\n        resposta = `${inicio} - ${fim}`; valido = true;\n        break;\n    case \"text\":\n    case \"pagamento\":\n        if (!resposta) { valido = false; erro = \"A resposta não pode ficar em branco.\"; }\n        else { resposta = capitalizarPrimeira(corrigirPlural(colapsarEspacos(resposta))); valido = true; }\n        break;\n    case \"enum:basico,avancado\":\n        {\n            const respostaNormalizada = normalizarTexto(resposta);\n            if (!resposta) { valido = false; erro = \"A resposta não pode ficar em branco.\"; }\n            else {\n                const temBasico = respostaNormalizada.includes(\"basico\");\n                const temAvancado = respostaNormalizada.includes(\"avancado\");\n                const temAmbos = /ambos|dois|todos|ambas|os 2|2|os dois/.test(respostaNormalizada);\n                if (temAmbos || (temBasico && temAvancado)) { resposta = \"Ambos\"; valido = true; }\n                else if (temBasico) { resposta = \"Básico\"; valido = true; }\n                else if (temAvancado) { resposta = \"Avançado\"; valido = true; }\n                else { valido = false; erro = \"Por favor, escolha entre: Básico, Avançado ou Ambos.\"; }\n            }\n        }\n        break;\n    case \"number\":\n        if (!resposta) { valido = false; erro = \"A resposta não pode ficar em branco.\"; }\n        else {\n            let s = resposta.replace(/[^\\d.,-]/g, '').replace(/\\s+/g, '');\n            const virgulas = (s.match(/,/g)||[]).length;\n            const pontos = (s.match(/\\./g)||[]).length;\n            if (pontos > 1 && virgulas === 0) s = s.replace(/\\./g, '');\n            else if (virgulas > 1 && pontos === 0) s = s.replace(/,/g, '');\n            else if (pontos >= 1 && virgulas >= 1) { s = s.replace(/\\./g, ''); s = s.replace(',', '.'); }\n            else s = s.replace(',', '.');\n            const valor = parseFloat(s);\n            if (isNaN(valor) || valor <= 0) { valido = false; erro = \"Por favor, informe um valor válido maior que zero (exemplo: R$ 120,00 ou 120).\"; }\n            else { valido = true; resposta = formatarMoedaPTBR(valor); }\n        }\n        break;\n    case \"prazo\":\n        if (!resposta) { valido = false; erro = \"A resposta não pode ficar em branco.\"; }\n        else {\n            const match = resposta.match(/(\\d+)/);\n            const dias = match ? parseInt(match[1], 10) : null;\n            if (!dias || dias <= 0) { valido = false; erro = \"Por favor, informe a validade em dias (exemplo: 7 dias, 10 ou 15 dias).\"; }\n            else { valido = true; resposta = dias === 1 ? \"1 dia\" : `${dias} dias`; }\n        }\n        break;\n    default:\n        if (!resposta) { valido = false; erro = \"A resposta não pode ficar em branco.\"; }\n        else { resposta = capitalizarPrimeira(corrigirPlural(colapsarEspacos(resposta))); valido = true; }\n        break;\n}\n\nreturn { json: { resposta, valido, erro } };"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        544,
-        656
-      ],
+      "position": [544, 656],
       "id": "b95ac009-fac5-4be9-9db7-4f8b1cc2b55f",
       "name": "Verifica respostas"
     },
@@ -474,23 +398,8 @@
           "values": [
             {
               "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $json.etapa.toNumber() }}",
-                    "rightValue": 11,
-                    "operator": {
-                      "type": "number",
-                      "operation": "equals"
-                    },
-                    "id": "422c4104-23bf-49f9-876f-a7082c92bf3f"
-                  }
-                ],
+                "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+                "conditions": [{"leftValue": "={{ $json.etapa.toNumber() }}", "rightValue": 11, "operator": {"type": "number", "operation": "equals"}, "id": "422c4104-23bf-49f9-876f-a7082c92bf3f"}],
                 "combinator": "and"
               },
               "renameOutput": true,
@@ -498,23 +407,8 @@
             },
             {
               "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "cb318388-7329-4cfb-9689-e1dbf57e96c0",
-                    "leftValue": "={{ $json.etapa.toNumber() }}",
-                    "rightValue": 9,
-                    "operator": {
-                      "type": "number",
-                      "operation": "lt"
-                    }
-                  }
-                ],
+                "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+                "conditions": [{"id": "cb318388-7329-4cfb-9689-e1dbf57e96c0", "leftValue": "={{ $json.etapa.toNumber() }}", "rightValue": 9, "operator": {"type": "number", "operation": "lt"}}],
                 "combinator": "and"
               },
               "renameOutput": true,
@@ -522,23 +416,8 @@
             },
             {
               "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "d5634d16-e229-428d-81f3-a72e08864232",
-                    "leftValue": "={{ $json.etapa.toNumber() }}",
-                    "rightValue": 9,
-                    "operator": {
-                      "type": "number",
-                      "operation": "equals"
-                    }
-                  }
-                ],
+                "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+                "conditions": [{"id": "d5634d16-e229-428d-81f3-a72e08864232", "leftValue": "={{ $json.etapa.toNumber() }}", "rightValue": 9, "operator": {"type": "number", "operation": "equals"}}],
                 "combinator": "and"
               },
               "renameOutput": true,
@@ -546,23 +425,8 @@
             },
             {
               "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "2053af37-3491-4cee-8e6f-7344501ee592",
-                    "leftValue": "={{ $json.etapa.toNumber() }}",
-                    "rightValue": 10,
-                    "operator": {
-                      "type": "number",
-                      "operation": "equals"
-                    }
-                  }
-                ],
+                "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+                "conditions": [{"id": "2053af37-3491-4cee-8e6f-7344501ee592", "leftValue": "={{ $json.etapa.toNumber() }}", "rightValue": 10, "operator": {"type": "number", "operation": "equals"}}],
                 "combinator": "and"
               },
               "renameOutput": true,
@@ -570,16 +434,11 @@
             }
           ]
         },
-        "options": {
-          "fallbackOutput": 1
-        }
+        "options": {"fallbackOutput": 1}
       },
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
-      "position": [
-        -448,
-        640
-      ],
+      "position": [-448, 640],
       "id": "16923522-28c2-494a-96c8-b0f58c51f58e",
       "name": "Switch"
     },
@@ -587,91 +446,49 @@
       "parameters": {
         "assignments": {
           "assignments": [
-            {
-              "id": "24bfa816-d5a9-4758-8bbf-5db762f68c64",
-              "name": "validator",
-              "value": "={{ $('Inform.').item.json.data[$('Inform.').item.json.etapa].validator }}",
-              "type": "string"
-            },
-            {
-              "id": "1b250504-01fb-44fb-bdfb-eac8a9d22fcf",
-              "name": "resposta",
-              "value": "={{ $json.respostaWpp }}",
-              "type": "string"
-            }
+            {"id": "24bfa816-d5a9-4758-8bbf-5db762f68c64", "name": "validator", "value": "={{ $('Inform.').item.json.data[$('Inform.').item.json.etapa].validator }}", "type": "string"},
+            {"id": "1b250504-01fb-44fb-bdfb-eac8a9d22fcf", "name": "resposta", "value": "={{ $json.respostaWpp }}", "type": "string"}
           ]
         },
         "options": {}
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [
-        624,
-        1280
-      ],
+      "position": [624, 1280],
       "id": "5eaf4b86-95b8-4240-92fc-01c02c8d8578",
       "name": "Validador de resposta1"
     },
     {
       "parameters": {
-        "jsCode": "const resposta = $json[\"resposta\"]?.trim() || \"\"; // garante string\nconst validator = $json[\"validator\"];\n\nlet valido = false;\nlet erro = \"\";\n\n\n// Função auxiliar para normalizar texto (tira acentos e deixa minúsculo)\nconst normalizar = (texto) =>\n  texto.normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\").toLowerCase();\n\n// Validação principal\nswitch (validator) {\n  case \"yesno\": {\n    if (!resposta) {\n      erro = \"A resposta não pode ser em branco!\";\n      break;\n    }\n\n    const respostaNormalizada = normalizar(resposta);\n    const opcoesValidas = [\"sim\", \"s\", \"ok\", \"si\", \"nao\", \"n\", \"não\", \"ñ\"];\n\n    valido = opcoesValidas.includes(respostaNormalizada);\n    if (!valido) erro = \"Por favor me informe uma opção válida, como sim ou não\";\n    break;\n  }\n\n}\n\nreturn { json: { resposta, valido, erro } };\n"
+        "jsCode": "const resposta = $json[\"resposta\"]?.trim() || \"\";\nconst validator = $json[\"validator\"];\nlet valido = false;\nlet erro = \"\";\n\nconst normalizar = (texto) =>\n  texto.normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\").toLowerCase();\n\nswitch (validator) {\n  case \"yesno\": {\n    if (!resposta) { erro = \"A resposta não pode ser em branco!\"; break; }\n    const respostaNormalizada = normalizar(resposta);\n    const opcoesValidas = [\"sim\", \"s\", \"ok\", \"si\", \"nao\", \"n\", \"não\", \"ñ\"];\n    valido = opcoesValidas.includes(respostaNormalizada);\n    if (!valido) erro = \"Por favor me informe uma opção válida, como sim ou não\";\n    break;\n  }\n}\n\nreturn { json: { resposta, valido, erro } };\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        864,
-        1280
-      ],
+      "position": [864, 1280],
       "id": "18a9ac09-e126-4d1f-84f4-d25af664a6d5",
       "name": "Verifica respostas1"
     },
     {
       "parameters": {
         "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "97c090e4-0f1f-4aa0-a147-fdac57e894b7",
-              "leftValue": "={{ $json.valido }}",
-              "rightValue": "",
-              "operator": {
-                "type": "boolean",
-                "operation": "true",
-                "singleValue": true
-              }
-            }
-          ],
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+          "conditions": [{"id": "97c090e4-0f1f-4aa0-a147-fdac57e894b7", "leftValue": "={{ $json.valido }}", "rightValue": "", "operator": {"type": "boolean", "operation": "true", "singleValue": true}}],
           "combinator": "and"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        1120,
-        1280
-      ],
+      "position": [1120, 1280],
       "id": "6ce4eaf7-ef97-405e-86df-461bdeea9d75",
       "name": "Aceitavel?"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{$node['Inform.'].json.apikey}}"
-            }
-          ]
-        },
+        "headerParameters": {"parameters": [{"name": "apikey", "value": "={{$node['Inform.'].json.apikey}}"}]},
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $node['Inform.'].json.remoteJid }}\",\n  \"text\": \"{{ $json.erro }}\",\n  \"delay\": 1200\n}",
@@ -679,46 +496,29 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        1488,
-        1632
-      ],
+      "position": [1488, 1632],
       "id": "92a98896-91b2-494c-9985-5cc7ed9d3e5d",
       "name": "Resposta Inválida1"
     },
     {
-      "parameters": {
-        "amount": "={{ $('Inform.').item.json.wait }}"
-      },
+      "parameters": {"amount": "={{ $('Inform.').item.json.wait }}"},
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "position": [
-        1232,
-        1632
-      ],
+      "position": [1232, 1632],
       "id": "7577e234-dd8f-4cff-a030-26cb650844f0",
       "name": "Wait4",
-      "webhookId": "33f714d7-37d4-41d9-88e1-e30f2db401ef"
+      "webhookId": "YOUR_WEBHOOK_ID"
     },
     {
       "parameters": {
         "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
           "conditions": [
             {
               "id": "2a446929-8932-471e-8ddd-09a783624925",
               "leftValue": "={{ ['sim','s','ok','si'].some(op => \n  $node['Verifica respostas1'].json.resposta\n    ?.normalize(\"NFD\")\n    .replace(/[\\u0300-\\u036f]/g, \"\")\n    .toLowerCase()\n    .includes(op)\n) }}",
               "rightValue": "=",
-              "operator": {
-                "type": "boolean",
-                "operation": "true",
-                "singleValue": true
-              }
+              "operator": {"type": "boolean", "operation": "true", "singleValue": true}
             }
           ],
           "combinator": "and"
@@ -727,10 +527,7 @@
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        1440,
-        1264
-      ],
+      "position": [1440, 1264],
       "id": "e8704591-5e5f-44c3-bf6f-37a65573ce16",
       "name": "Sim ou Nao"
     },
@@ -742,10 +539,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
-      "position": [
-        2096,
-        736
-      ],
+      "position": [2096, 736],
       "id": "5d67b4c4-bcef-48bb-9244-de569b7d040c",
       "name": "Sticky Note"
     },
@@ -757,32 +551,19 @@
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        2112,
-        1056
-      ],
+      "position": [2112, 1056],
       "id": "2b2a8c9c-b8a8-4481-9d90-7ed79b86f20e",
       "name": "Salva estado da conversa2",
-      "credentials": {
-        "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
-          "name": "Postgres account"
-        }
-      }
+      "credentials": {"postgres": {"id": "YOUR_POSTGRES_CREDENTIAL_ID", "name": "Postgres account"}}
     },
     {
-      "parameters": {
-        "amount": "={{ $('Inform.').item.json.wait }}"
-      },
+      "parameters": {"amount": "={{ $('Inform.').item.json.wait }}"},
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "position": [
-        1584,
-        1424
-      ],
+      "position": [1584, 1424],
       "id": "56df3ba9-acfd-41a2-ac46-6ff6a2cd8999",
       "name": "Wait5",
-      "webhookId": "33f714d7-37d4-41d9-88e1-e30f2db401ef"
+      "webhookId": "YOUR_WEBHOOK_ID"
     },
     {
       "parameters": {
@@ -792,95 +573,48 @@
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        2080,
-        1520
-      ],
+      "position": [2080, 1520],
       "id": "961f6833-ac41-4443-8068-0db106a73509",
       "name": "Salva estado da conversa3",
-      "credentials": {
-        "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
-          "name": "Postgres account"
-        }
-      }
+      "credentials": {"postgres": {"id": "YOUR_POSTGRES_CREDENTIAL_ID", "name": "Postgres account"}}
     },
     {
       "parameters": {
         "assignments": {
           "assignments": [
-            {
-              "id": "24bfa816-d5a9-4758-8bbf-5db762f68c64",
-              "name": "validator",
-              "value": "={{ $('Inform.').item.json.data[$('Inform.').item.json.etapa].validator }}",
-              "type": "string"
-            },
-            {
-              "id": "1b250504-01fb-44fb-bdfb-eac8a9d22fcf",
-              "name": "resposta",
-              "value": "={{ $('Inform.').item.json.respostaWpp }}",
-              "type": "string"
-            }
+            {"id": "24bfa816-d5a9-4758-8bbf-5db762f68c64", "name": "validator", "value": "={{ $('Inform.').item.json.data[$('Inform.').item.json.etapa].validator }}", "type": "string"},
+            {"id": "1b250504-01fb-44fb-bdfb-eac8a9d22fcf", "name": "resposta", "value": "={{ $('Inform.').item.json.respostaWpp }}", "type": "string"}
           ]
         },
         "options": {}
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [
-        432,
-        2272
-      ],
+      "position": [432, 2272],
       "id": "74bfe29a-227f-4e09-b7e3-d555095e57f3",
       "name": "Validador de resposta2"
     },
     {
       "parameters": {
         "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "97c090e4-0f1f-4aa0-a147-fdac57e894b7",
-              "leftValue": "={{ $json.valido }}",
-              "rightValue": "",
-              "operator": {
-                "type": "boolean",
-                "operation": "true",
-                "singleValue": true
-              }
-            }
-          ],
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+          "conditions": [{"id": "97c090e4-0f1f-4aa0-a147-fdac57e894b7", "leftValue": "={{ $json.valido }}", "rightValue": "", "operator": {"type": "boolean", "operation": "true", "singleValue": true}}],
           "combinator": "and"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        1264,
-        2160
-      ],
+      "position": [1264, 2160],
       "id": "f4b9588d-a443-4ec4-a749-b081070b7b02",
       "name": "Aceitavel?1"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{$node['Inform.'].json.apikey}}"
-            }
-          ]
-        },
+        "headerParameters": {"parameters": [{"name": "apikey", "value": "={{$node['Inform.'].json.apikey}}"}]},
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $node['Inform.'].json.remoteJid }}\",\n  \"text\": \"{{ $json.erro }}\",\n  \"delay\": 1200\n}",
@@ -888,40 +622,25 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        1840,
-        2304
-      ],
+      "position": [1840, 2304],
       "id": "54d9abd5-6893-491f-9155-66c8d7eef560",
       "name": "Resposta Inválida3"
     },
     {
-      "parameters": {
-        "amount": "={{ $('Inform.').item.json.wait }}"
-      },
+      "parameters": {"amount": "={{ $('Inform.').item.json.wait }}"},
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "position": [
-        1584,
-        2304
-      ],
+      "position": [1584, 2304],
       "id": "61f9ac86-1713-415f-accf-3c063d725576",
       "name": "Wait6",
-      "webhookId": "33f714d7-37d4-41d9-88e1-e30f2db401ef"
+      "webhookId": "YOUR_WEBHOOK_ID"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{$node['Inform.'].json.apikey}}"
-            }
-          ]
-        },
+        "headerParameters": {"parameters": [{"name": "apikey", "value": "={{$node['Inform.'].json.apikey}}"}]},
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $node['Inform.'].json.remoteJid }}\",\n  \"text\": \"Perfeito 😄!\\nAqui está o resumo das informações que você me passou:\\n\\n*1️⃣ Nome do evento:* {{ $json.mensagem_2 }}\\n*2️⃣ Endereço:* {{ $json.mensagem_3 }}\\n*3️⃣ Data do evento:* {{ $json.mensagem_4 }}\\n*4️⃣ Horário:* {{ $json.mensagem_5 }}\\n*5️⃣ Tipo de suporte:* {{ $json.mensagem_6 }}\\n*6️⃣ Valor:* {{ $json.mensagem_8 }}\\n*7️⃣ Validade da proposta:* {{ $json.mensagem_7 }}\\n\\nEstá tudo correto ?\\n\\nPor favor, responda com *sim* ou *não* ✅\",\n  \"delay\": 1200\n}\n",
@@ -929,26 +648,16 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        3200,
-        288
-      ],
+      "position": [3200, 288],
       "id": "a501ad5c-8a5d-4372-9cd9-bc0a1a0c5801",
       "name": "Confirma Informações"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{$node['Inform.'].json.apikey}}"
-            }
-          ]
-        },
+        "headerParameters": {"parameters": [{"name": "apikey", "value": "={{$node['Inform.'].json.apikey}}"}]},
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $node['Inform.'].json.remoteJid }}\",\n  \"text\": \"Perfeito 😄!\\nAqui está o resumo das informações que você me passou:\\n\\n*1️⃣ Nome do evento:* {{ $json.mensagem_2 }}\\n*2️⃣ Endereço:* {{ $json.mensagem_3 }}\\n*3️⃣ Data do evento:* {{ $json.mensagem_4 }}\\n*4️⃣ Horário:* {{ $json.mensagem_5 }}\\n*5️⃣ Tipo de suporte:* {{ $json.mensagem_6 }}\\n*6️⃣ Valor:* {{ $json.mensagem_8 }}\\n*7️⃣ Validade da proposta:* {{ $json.mensagem_7 }}\\n\\nEstá tudo correto ?\\n\\nPor favor, responda com *sim* ou *não* ✅\",\n  \"delay\": 1200\n}\n",
@@ -956,120 +665,59 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        2432,
-        2144
-      ],
+      "position": [2432, 2144],
       "id": "34fdd652-cd8a-43ec-b3d4-e80507b42ea1",
       "name": "Confirma Informações1"
     },
     {
       "parameters": {
         "operation": "select",
-        "schema": {
-          "__rl": true,
-          "mode": "list",
-          "value": "public"
-        },
-        "table": {
-          "__rl": true,
-          "value": "conversas_chatbot",
-          "mode": "list",
-          "cachedResultName": "conversas_chatbot"
-        },
-        "where": {
-          "values": [
-            {
-              "column": "conversa_id",
-              "value": "={{ $('Inform.').item.json.remoteJid.slice(0,12) }}"
-            }
-          ]
-        },
+        "schema": {"__rl": true, "mode": "list", "value": "public"},
+        "table": {"__rl": true, "value": "conversas_chatbot", "mode": "list", "cachedResultName": "conversas_chatbot"},
+        "where": {"values": [{"column": "conversa_id", "value": "={{ $('Inform.').item.json.remoteJid.slice(0,12) }}"}]},
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        1808,
-        2048
-      ],
+      "position": [1808, 2048],
       "id": "a2df36f8-5dbe-4d4c-bb2e-cf5e080c2380",
       "name": "Pega todas as info.1",
       "alwaysOutputData": true,
-      "credentials": {
-        "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
-          "name": "Postgres account"
-        }
-      }
+      "credentials": {"postgres": {"id": "YOUR_POSTGRES_CREDENTIAL_ID", "name": "Postgres account"}}
     },
     {
-      "parameters": {
-        "amount": "={{ $('Inform.').item.json.wait }}"
-      },
+      "parameters": {"amount": "={{ $('Inform.').item.json.wait }}"},
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "position": [
-        2736,
-        160
-      ],
+      "position": [2736, 160],
       "id": "d74bc380-9628-4542-b1e6-017008811067",
       "name": "Wait7",
-      "webhookId": "33f714d7-37d4-41d9-88e1-e30f2db401ef"
+      "webhookId": "YOUR_WEBHOOK_ID"
     },
     {
       "parameters": {
         "operation": "select",
-        "schema": {
-          "__rl": true,
-          "mode": "list",
-          "value": "public"
-        },
-        "table": {
-          "__rl": true,
-          "value": "conversas_chatbot",
-          "mode": "list",
-          "cachedResultName": "conversas_chatbot"
-        },
-        "where": {
-          "values": [
-            {
-              "column": "conversa_id",
-              "value": "={{ $('Inform.').item.json.remoteJid.slice(0,12) }}"
-            }
-          ]
-        },
+        "schema": {"__rl": true, "mode": "list", "value": "public"},
+        "table": {"__rl": true, "value": "conversas_chatbot", "mode": "list", "cachedResultName": "conversas_chatbot"},
+        "where": {"values": [{"column": "conversa_id", "value": "={{ $('Inform.').item.json.remoteJid.slice(0,12) }}"}]},
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        2496,
-        160
-      ],
+      "position": [2496, 160],
       "id": "965a5f98-3a54-4afb-ba22-85495a0f5d1b",
       "name": "Pega todas as info.2",
       "alwaysOutputData": true,
-      "credentials": {
-        "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
-          "name": "Postgres account"
-        }
-      }
+      "credentials": {"postgres": {"id": "YOUR_POSTGRES_CREDENTIAL_ID", "name": "Postgres account"}}
     },
     {
-      "parameters": {
-        "amount": "={{ $('Inform.').item.json.wait }}"
-      },
+      "parameters": {"amount": "={{ $('Inform.').item.json.wait }}"},
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "position": [
-        2016,
-        2048
-      ],
+      "position": [2016, 2048],
       "id": "cb2e42c8-24bf-4fdf-b4c0-3a2ecc7feaf0",
       "name": "Wait8",
-      "webhookId": "33f714d7-37d4-41d9-88e1-e30f2db401ef"
+      "webhookId": "YOUR_WEBHOOK_ID"
     },
     {
       "parameters": {
@@ -1079,32 +727,17 @@
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        5984,
-        992
-      ],
+      "position": [5984, 992],
       "id": "b26a0b83-8c2a-41b5-8c18-1fb6ee65f5fa",
       "name": "Remove Histórico de conversa",
-      "credentials": {
-        "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
-          "name": "Postgres account"
-        }
-      }
+      "credentials": {"postgres": {"id": "YOUR_POSTGRES_CREDENTIAL_ID", "name": "Postgres account"}}
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{$node['Inform.'].json.apikey}}"
-            }
-          ]
-        },
+        "headerParameters": {"parameters": [{"name": "apikey", "value": "={{$node['Inform.'].json.apikey}}"}]},
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $node['Inform.'].json.remoteJid }}\",\n  \"text\": \"🎉 Prontinho! A tarefa foi criada no ClickUp.\\nConfira aqui: {{ $('Create a task1').item.json.url }}\\n\\n📄 Agora vou gerar o seu PDF rapidinho, só um instante!\",\n  \"delay\": 1200\n}",
@@ -1112,41 +745,26 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        5088,
-        992
-      ],
+      "position": [5088, 992],
       "id": "172593dd-362e-4c69-acc4-4a0922348532",
       "name": "Avisa que Tarefa foi criada no Click Up",
       "executeOnce": true
     },
     {
-      "parameters": {
-        "amount": "={{ $('Inform.').item.json.wait }}"
-      },
+      "parameters": {"amount": "={{ $('Inform.').item.json.wait }}"},
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "position": [
-        1488,
-        176
-      ],
+      "position": [1488, 176],
       "id": "9ec5a770-040c-4158-bd60-8b44749addf0",
       "name": "Wait9",
-      "webhookId": "33f714d7-37d4-41d9-88e1-e30f2db401ef"
+      "webhookId": "YOUR_WEBHOOK_ID"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{$node['Inform.'].json.apikey}}"
-            }
-          ]
-        },
+        "headerParameters": {"parameters": [{"name": "apikey", "value": "={{$node['Inform.'].json.apikey}}"}]},
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $node['Inform.'].json.remoteJid }}\",\n  \"text\": \"{{ $('Inform.').item.json.data[$('Inform.').item.json.etapa.toNumber()+1].content }}\",\n  \"delay\": 1200\n}",
@@ -1154,10 +772,7 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        1728,
-        176
-      ],
+      "position": [1728, 176],
       "id": "0462ed11-8c6e-41fa-843e-0d3bb88fac8a",
       "name": "Pergunta Valor de Suportes"
     },
@@ -1167,23 +782,8 @@
           "values": [
             {
               "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "043d6222-806c-41f5-95b6-ce35ee45a005",
-                    "leftValue": "={{ $('Inform.').item.json.etapa.toNumber() }}",
-                    "rightValue": 13,
-                    "operator": {
-                      "type": "number",
-                      "operation": "equals"
-                    }
-                  }
-                ],
+                "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+                "conditions": [{"id": "043d6222-806c-41f5-95b6-ce35ee45a005", "leftValue": "={{ $('Inform.').item.json.etapa.toNumber() }}", "rightValue": 13, "operator": {"type": "number", "operation": "equals"}}],
                 "combinator": "and"
               },
               "renameOutput": true,
@@ -1191,23 +791,8 @@
             },
             {
               "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $('Inform.').item.json.etapa.toNumber() }}",
-                    "rightValue": 12,
-                    "operator": {
-                      "type": "number",
-                      "operation": "equals"
-                    },
-                    "id": "4252f836-9739-46e5-8a5b-711ff254f2ba"
-                  }
-                ],
+                "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+                "conditions": [{"leftValue": "={{ $('Inform.').item.json.etapa.toNumber() }}", "rightValue": 12, "operator": {"type": "number", "operation": "equals"}, "id": "4252f836-9739-46e5-8a5b-711ff254f2ba"}],
                 "combinator": "and"
               },
               "renameOutput": true,
@@ -1215,17 +800,11 @@
             }
           ]
         },
-        "options": {
-          "fallbackOutput": "extra",
-          "renameFallbackOutput": "Etapas Normais"
-        }
+        "options": {"fallbackOutput": "extra", "renameFallbackOutput": "Etapas Normais"}
       },
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
-      "position": [
-        1200,
-        368
-      ],
+      "position": [1200, 368],
       "id": "4fac642d-8095-426c-ae3f-91ac8e8ef32f",
       "name": "Switch1"
     },
@@ -1237,18 +816,10 @@
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        1936,
-        176
-      ],
+      "position": [1936, 176],
       "id": "7ae751cc-1761-4fa2-a4f5-77e0c8d25faf",
       "name": "Salva Suporte Básico",
-      "credentials": {
-        "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
-          "name": "Postgres account"
-        }
-      }
+      "credentials": {"postgres": {"id": "YOUR_POSTGRES_CREDENTIAL_ID", "name": "Postgres account"}}
     },
     {
       "parameters": {
@@ -1258,65 +829,32 @@
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        1504,
-        0
-      ],
+      "position": [1504, 0],
       "id": "d38067f1-9dae-4c8c-8cb5-1f2afc564756",
       "name": "Salva Suporte Avançado",
-      "credentials": {
-        "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
-          "name": "Postgres account"
-        }
-      }
+      "credentials": {"postgres": {"id": "YOUR_POSTGRES_CREDENTIAL_ID", "name": "Postgres account"}}
     },
     {
       "parameters": {
         "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "d9602974-4209-4445-8a71-0c2ad7d3e59e",
-              "leftValue": "={{ $json.mensagem_6 }}",
-              "rightValue": "Ambos",
-              "operator": {
-                "type": "string",
-                "operation": "equals"
-              }
-            }
-          ],
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+          "conditions": [{"id": "d9602974-4209-4445-8a71-0c2ad7d3e59e", "leftValue": "={{ $json.mensagem_6 }}", "rightValue": "Ambos", "operator": {"type": "string", "operation": "equals"}}],
           "combinator": "and"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        2944,
-        160
-      ],
+      "position": [2944, 160],
       "id": "e472b4c1-c171-43ec-af56-6a7cf7d9ee4b",
       "name": "If"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{$node['Inform.'].json.apikey}}"
-            }
-          ]
-        },
+        "headerParameters": {"parameters": [{"name": "apikey", "value": "={{$node['Inform.'].json.apikey}}"}]},
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $node['Inform.'].json.remoteJid }}\",\n  \"text\": \"Perfeito 😄!\\nAqui está o resumo das informações que você me passou:\\n\\n*1️⃣ Nome do evento:* {{ $json.mensagem_2 }}\\n*2️⃣ Endereço:* {{ $json.mensagem_3 }}\\n*3️⃣ Data do evento:* {{ $json.mensagem_4 }}\\n*4️⃣ Horário:* {{ $json.mensagem_5 }}\\n*5️⃣ Tipo de suporte:* {{ $json.mensagem_6 }}\\n*6️⃣ Valor Básico:* {{ $json.mensagem_12 }}\\n*7️⃣ Valor Avançado:* {{ $json.mensagem_13 }}\\n*8️⃣ Validade da proposta:* {{ $json.mensagem_7 }}\\n\\nEstá tudo correto ?\\n\\nPor favor, responda com *sim* ou *não* ✅\",\n  \"delay\": 1200\n}\n",
@@ -1324,119 +862,46 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        3200,
-        0
-      ],
+      "position": [3200, 0],
       "id": "04b7e3b9-2e8b-4f11-99b0-fb9efd0c96ec",
       "name": "Confirma Informações BA"
     },
     {
       "parameters": {
-        "jsCode": "const resposta = $json[\"resposta\"]?.trim() || \"\";\nlet valido = false;\nlet erro = \"\";\nlet numero = null;\nlet valor = \"\";\n\n// ============ FUNÇÕES AUXILIARES ============\n\nfunction colapsarEspacos(s) {\n    return s.replace(/\\s+/g, ' ').trim();\n}\n\nfunction capitalizarPrimeira(s) {\n    if (!s) return s;\n    return s.charAt(0).toUpperCase() + s.slice(1);\n}\n\nfunction normalizarTexto(texto) {\n    return texto.toLowerCase()\n        .normalize(\"NFD\")\n        .replace(/[\\u0300-\\u036f]/g, \"\")\n        .trim();\n}\n\nfunction validarHora(horaStr) {\n    const regex = /^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$/;\n    return regex.test(horaStr);\n}\n\nfunction padronizarHora(horaStr) {\n    const [h, m] = horaStr.split(':');\n    const hh = String(parseInt(h, 10)).padStart(2, '0');\n    const mm = String(parseInt(m, 10)).padStart(2, '0');\n    return `${hh}:${mm}`;\n}\n\nfunction validarEPadronizarData(dataStr, validarFutura = false) {\n    const sep = dataStr.includes('/') ? '/' : (dataStr.includes('-') ? '-' : null);\n    if (!sep) return null;\n    \n    const partes = dataStr.split(sep).map(p => p.trim());\n    if (partes.length !== 3) return null;\n    \n    let [dd, mm, yyyy] = partes;\n    if (!/^\\d{1,2}$/.test(dd) || !/^\\d{1,2}$/.test(mm) || !/^\\d{4}$/.test(yyyy)) return null;\n    \n    const dia = parseInt(dd, 10);\n    const mes = parseInt(mm, 10);\n    const ano = parseInt(yyyy, 10);\n    const dt = new Date(ano, mes - 1, dia);\n    \n    if (dt.getFullYear() !== ano || dt.getMonth() !== (mes - 1) || dt.getDate() !== dia) return null;\n    \n    // Verifica se a data é futura (se solicitado)\n    if (validarFutura) {\n        const hoje = new Date();\n        hoje.setHours(0, 0, 0, 0); // Zera as horas para comparar apenas a data\n        dt.setHours(0, 0, 0, 0);\n        \n        if (dt < hoje) {\n            return \"PASSADO\"; // Retorna código especial para data no passado\n        }\n    }\n    \n    const dd2 = String(dia).padStart(2, '0');\n    const mm2 = String(mes).padStart(2, '0');\n    return `${dd2}/${mm2}/${ano}`;\n}\n\nfunction formatarMoedaPTBR(valorNum) {\n    try {\n        return valorNum.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });\n    } catch (e) {\n        const valorFormatado = valorNum.toFixed(2).replace('.', ',').replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n        return 'R$ ' + valorFormatado;\n    }\n}\n\nfunction parsearValorMonetario(valorStr) {\n    const apenas = valorStr.replace(/[^\\d.,-]/g, '').replace(/\\s+/g, '');\n    let s = apenas;\n    const virgulas = (s.match(/,/g) || []).length;\n    const pontos = (s.match(/\\./g) || []).length;\n    \n    if (pontos > 1 && virgulas === 0) {\n        s = s.replace(/\\./g, '');\n    } else if (virgulas > 1 && pontos === 0) {\n        s = s.replace(/,/g, '');\n    } else if (pontos >= 1 && virgulas >= 1) {\n        s = s.replace(/\\./g, '');\n        s = s.replace(',', '.');\n    } else {\n        s = s.replace(',', '.');\n    }\n    \n    return parseFloat(s);\n}\n\n// ============ CONFIGURAÇÃO DE VALIDAÇÃO POR NÚMERO ============\n\nconst configuracoes = {\n    \"1\": {\n        tipo: \"texto\",\n        descricao: \"texto\"\n    },\n    \"2\": {\n        tipo: \"texto\",\n        descricao: \"texto\"\n    },\n    \"3\": {\n        tipo: \"data\",\n        descricao: \"data no formato dd/MM/aaaa\"\n    },\n    \"4\": {\n        tipo: \"hora\",\n        descricao: \"horário no formato hh:mm\"\n    },\n    \"5\": {\n        tipo: \"enum\",\n        descricao: \"Básico, Avançado ou Ambos\"\n    },\n    \"6\": {\n        tipo: \"moeda\",\n        descricao: \"valor em reais\"\n    },\n    \"7\": {\n        tipo: \"prazo\",\n        descricao: \"número de dias\"\n    }\n};\n\n// ============ VALIDAÇÃO PRINCIPAL ============\n\nconst padrao = /^(\\d+)\\s*-\\s*(.+)$/;\nconst match = resposta.match(padrao);\n\nif (!resposta) {\n    erro = \"A resposta não pode ficar em branco.\";\n} else if (!match) {\n    erro = \"O formato está incorreto. Use o modelo: '1 - Seu valor' (número, traço e valor).\";\n} else {\n    numero = match[1].trim();\n    valor = match[2].trim();\n    \n    const config = configuracoes[numero];\n    \n    if (!config) {\n        erro = `O número '${numero}' não é válido. Escolha entre 1 e 7.`;\n    } else if (!valor) {\n        erro = \"O valor após o traço não pode estar vazio.\";\n    } else {\n        // Valida de acordo com o tipo esperado\n        switch (config.tipo) {\n            case \"texto\":\n                valor = colapsarEspacos(valor);\n                valor = capitalizarPrimeira(valor);\n                valido = true;\n                break;\n                \n            case \"data\":\n                const dataPadronizada = validarEPadronizarData(valor, true);\n                if (!dataPadronizada) {\n                    erro = `O valor deve ser uma ${config.descricao} válida (exemplo: 25/12/2025).`;\n                } else if (dataPadronizada === \"PASSADO\") {\n                    erro = \"A data não pode ser no passado. Informe uma data de hoje ou futura.\";\n                } else {\n                    valor = dataPadronizada;\n                    valido = true;\n                }\n                break;\n                \n            case \"hora\":\n              if (!valor) {\n                  erro = `O valor deve ser um ${config.descricao} (exemplo: 18:30 - 19:00).`;\n                  break;\n              }\n          \n              const partes = valor.split('-').map(p => p.trim());\n          \n              if (partes.length !== 2) {\n                  erro = `Use o formato hh:mm - hh:mm (exemplo: 18:30 - 19:00).`;\n                  break;\n              }\n          \n              const [inicio, fim] = partes;\n          \n              if (!validarHora(inicio) || !validarHora(fim)) {\n                  erro = `Informe horários válidos no formato hh:mm - hh:mm.`;\n                  break;\n              }\n          \n              const [hi, mi] = inicio.split(':').map(Number);\n              const [hf, mf] = fim.split(':').map(Number);\n          \n              const inicioMin = hi * 60 + mi;\n              const fimMin = hf * 60 + mf;\n          \n              if (inicioMin === fimMin) {\n                  erro = `Os horários não podem ser iguais.`;\n                  break;\n              }\n          \n              valor = `${padronizarHora(inicio)} - ${padronizarHora(fim)}`;\n              valido = true;\n              break;\n                \n            case \"enum\":\n                const valorNormalizado = normalizarTexto(valor);\n                const temBasico = valorNormalizado.includes(\"basico\");\n                const temAvancado = valorNormalizado.includes(\"avancado\");\n                const temAmbos = /ambos|dois|todos|ambas|os 2|2|os dois|básico e avançado|basico e avancado|avançado e básico|avancado e basico/.test(valorNormalizado);\n                \n                if (temAmbos || (temBasico && temAvancado)) {\n                    valor = \"Ambos\";\n                    valido = true;\n                } else if (temBasico && !temAvancado) {\n                    valor = \"Básico\";\n                    valido = true;\n                } else if (temAvancado && !temBasico) {\n                    valor = \"Avançado\";\n                    valido = true;\n                } else {\n                    erro = `O valor deve ser ${config.descricao}.`;\n                }\n                break;\n                \n            case \"moeda\":\n                const valorMonetario = parsearValorMonetario(valor);\n                if (isNaN(valorMonetario) || valorMonetario <= 0) {\n                    erro = `O valor deve ser um ${config.descricao} válido maior que zero (exemplo: R$ 120,00 ou 120).`;\n                } else {\n                    valor = formatarMoedaPTBR(valorMonetario);\n                    valido = true;\n                }\n                break;\n                \n            case \"prazo\":\n                const matchDias = valor.match(/(\\d+)/);\n                const dias = matchDias ? parseInt(matchDias[1], 10) : null;\n                \n                if (!dias || dias <= 0) {\n                    erro = `O valor deve ser um ${config.descricao} válido (exemplo: 7 dias, 10 ou 15 dias).`;\n                } else {\n                    valor = dias === 1 ? \"1 dia\" : `${dias} dias`;\n                    valido = true;\n                }\n                break;\n        }\n    }\n}\n\nreturn {\n    json: {\n        resposta,\n        numero,\n        valor,\n        valido,\n        erro\n    }\n};"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        960,
-        2160
-      ],
-      "id": "93733156-9c99-4789-b634-53d8229b38ba",
-      "name": "Verifica Resposta 1 Sup"
-    },
-    {
-      "parameters": {
-        "jsCode": "const resposta = $json[\"resposta\"]?.trim() || \"\";\nlet valido = false;\nlet erro = \"\";\nlet numero = null;\nlet valor = \"\";\n\n// ============ FUNÇÕES AUXILIARES ============\n\nfunction colapsarEspacos(s) {\n    return s.replace(/\\s+/g, ' ').trim();\n}\n\nfunction capitalizarPrimeira(s) {\n    if (!s) return s;\n    return s.charAt(0).toUpperCase() + s.slice(1);\n}\n\nfunction normalizarTexto(texto) {\n    return texto.toLowerCase()\n        .normalize(\"NFD\")\n        .replace(/[\\u0300-\\u036f]/g, \"\")\n        .trim();\n}\n\nfunction validarHora(horaStr) {\n    const regex = /^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$/;\n    return regex.test(horaStr);\n}\n\nfunction padronizarHora(horaStr) {\n    const [h, m] = horaStr.split(':');\n    const hh = String(parseInt(h, 10)).padStart(2, '0');\n    const mm = String(parseInt(m, 10)).padStart(2, '0');\n    return `${hh}:${mm}`;\n}\n\nfunction validarEPadronizarData(dataStr, validarFutura = false) {\n    const sep = dataStr.includes('/') ? '/' : (dataStr.includes('-') ? '-' : null);\n    if (!sep) return null;\n    \n    const partes = dataStr.split(sep).map(p => p.trim());\n    if (partes.length !== 3) return null;\n    \n    let [dd, mm, yyyy] = partes;\n    if (!/^\\d{1,2}$/.test(dd) || !/^\\d{1,2}$/.test(mm) || !/^\\d{4}$/.test(yyyy)) return null;\n    \n    const dia = parseInt(dd, 10);\n    const mes = parseInt(mm, 10);\n    const ano = parseInt(yyyy, 10);\n    const dt = new Date(ano, mes - 1, dia);\n    \n    if (dt.getFullYear() !== ano || dt.getMonth() !== (mes - 1) || dt.getDate() !== dia) return null;\n    \n    // Verifica se a data é futura (se solicitado)\n    if (validarFutura) {\n        const hoje = new Date();\n        hoje.setHours(0, 0, 0, 0); // Zera as horas para comparar apenas a data\n        dt.setHours(0, 0, 0, 0);\n        \n        if (dt < hoje) {\n            return \"PASSADO\"; // Retorna código especial para data no passado\n        }\n    }\n    \n    const dd2 = String(dia).padStart(2, '0');\n    const mm2 = String(mes).padStart(2, '0');\n    return `${dd2}/${mm2}/${ano}`;\n}\n\nfunction formatarMoedaPTBR(valorNum) {\n    try {\n        return valorNum.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });\n    } catch (e) {\n        const valorFormatado = valorNum.toFixed(2).replace('.', ',').replace(/\\B(?=(\\d{3})+(?!\\d))/g, '.');\n        return 'R$ ' + valorFormatado;\n    }\n}\n\nfunction parsearValorMonetario(valorStr) {\n    const apenas = valorStr.replace(/[^\\d.,-]/g, '').replace(/\\s+/g, '');\n    let s = apenas;\n    const virgulas = (s.match(/,/g) || []).length;\n    const pontos = (s.match(/\\./g) || []).length;\n    \n    if (pontos > 1 && virgulas === 0) {\n        s = s.replace(/\\./g, '');\n    } else if (virgulas > 1 && pontos === 0) {\n        s = s.replace(/,/g, '');\n    } else if (pontos >= 1 && virgulas >= 1) {\n        s = s.replace(/\\./g, '');\n        s = s.replace(',', '.');\n    } else {\n        s = s.replace(',', '.');\n    }\n    \n    return parseFloat(s);\n}\n\n// ============ CONFIGURAÇÃO DE VALIDAÇÃO POR NÚMERO ============\n\nconst configuracoes = {\n    \"1\": {\n        tipo: \"texto\",\n        descricao: \"texto\"\n    },\n    \"2\": {\n        tipo: \"texto\",\n        descricao: \"texto\"\n    },\n    \"3\": {\n        tipo: \"data\",\n        descricao: \"data no formato dd/MM/aaaa\"\n    },\n    \"4\": {\n        tipo: \"hora\",\n        descricao: \"horário no formato hh:mm\"\n    },\n    \"5\": {\n        tipo: \"enum\",\n        descricao: \"Básico, Avançado ou Ambos\"\n    },\n    \"6\": {\n        tipo: \"moeda\",\n        descricao: \"valor em reais\"\n    },\n    \"7\": {\n        tipo: \"moeda\",\n        descricao: \"valor em reais\"\n    },\n    \"8\": {\n        tipo: \"prazo\",\n        descricao: \"número de dias\"\n    }\n};\n\n// ============ VALIDAÇÃO PRINCIPAL ============\n\nconst padrao = /^(\\d+)\\s*-\\s*(.+)$/;\nconst match = resposta.match(padrao);\n\nif (!resposta) {\n    erro = \"A resposta não pode ficar em branco.\";\n} else if (!match) {\n    erro = \"O formato está incorreto. Use o modelo: '1 - Seu valor' (número, traço e valor).\";\n} else {\n    numero = match[1].trim();\n    valor = match[2].trim();\n    \n    const config = configuracoes[numero];\n    \n    if (!config) {\n        erro = `O número '${numero}' não é válido. Escolha entre 1 e 7.`;\n    } else if (!valor) {\n        erro = \"O valor após o traço não pode estar vazio.\";\n    } else {\n        // Valida de acordo com o tipo esperado\n        switch (config.tipo) {\n            case \"texto\":\n                valor = colapsarEspacos(valor);\n                valor = capitalizarPrimeira(valor);\n                valido = true;\n                break;\n                \n            case \"data\":\n                const dataPadronizada = validarEPadronizarData(valor, true);\n                if (!dataPadronizada) {\n                    erro = `O valor deve ser uma ${config.descricao} válida (exemplo: 25/12/2025).`;\n                } else if (dataPadronizada === \"PASSADO\") {\n                    erro = \"A data não pode ser no passado. Informe uma data de hoje ou futura.\";\n                } else {\n                    valor = dataPadronizada;\n                    valido = true;\n                }\n                break;\n                \n            case \"hora\":\n              if (!valor) {\n                  erro = `O valor deve ser um ${config.descricao} (exemplo: 18:30 - 19:00).`;\n                  break;\n              }\n          \n              const partes = valor.split('-').map(p => p.trim());\n          \n              if (partes.length !== 2) {\n                  erro = `Use o formato hh:mm - hh:mm (exemplo: 18:30 - 19:00).`;\n                  break;\n              }\n          \n              const [inicio, fim] = partes;\n          \n              if (!validarHora(inicio) || !validarHora(fim)) {\n                  erro = `Informe horários válidos no formato hh:mm - hh:mm.`;\n                  break;\n              }\n          \n              const [hi, mi] = inicio.split(':').map(Number);\n              const [hf, mf] = fim.split(':').map(Number);\n          \n              const inicioMin = hi * 60 + mi;\n              const fimMin = hf * 60 + mf;\n          \n              if (inicioMin === fimMin) {\n                  erro = `Os horários não podem ser iguais.`;\n                  break;\n              }\n          \n              valor = `${padronizarHora(inicio)} - ${padronizarHora(fim)}`;\n              valido = true;\n              break;\n                \n            case \"enum\":\n                const valorNormalizado = normalizarTexto(valor);\n                const temBasico = valorNormalizado.includes(\"basico\");\n                const temAvancado = valorNormalizado.includes(\"avancado\");\n                const temAmbos = /ambos|dois|todos|ambas|os 2|2|os dois|básico e avançado|basico e avancado|avançado e básico|avancado e basico/.test(valorNormalizado);\n                \n                if (temAmbos || (temBasico && temAvancado)) {\n                    valor = \"Ambos\";\n                    valido = true;\n                } else if (temBasico && !temAvancado) {\n                    valor = \"Básico\";\n                    valido = true;\n                } else if (temAvancado && !temBasico) {\n                    valor = \"Avançado\";\n                    valido = true;\n                } else {\n                    erro = `O valor deve ser ${config.descricao}.`;\n                }\n                break;\n                \n            case \"moeda\":\n                const valorMonetario = parsearValorMonetario(valor);\n                if (isNaN(valorMonetario) || valorMonetario <= 0) {\n                    erro = `O valor deve ser um ${config.descricao} válido maior que zero (exemplo: R$ 120,00 ou 120).`;\n                } else {\n                    valor = formatarMoedaPTBR(valorMonetario);\n                    valido = true;\n                }\n                break;\n                \n            case \"prazo\":\n                const matchDias = valor.match(/(\\d+)/);\n                const dias = matchDias ? parseInt(matchDias[1], 10) : null;\n                \n                if (!dias || dias <= 0) {\n                    erro = `O valor deve ser um ${config.descricao} válido (exemplo: 7 dias, 10 ou 15 dias).`;\n                } else {\n                    valor = dias === 1 ? \"1 dia\" : `${dias} dias`;\n                    valido = true;\n                }\n                break;\n        }\n    }\n}\n\nreturn {\n    json: {\n        resposta,\n        numero,\n        valor,\n        valido,\n        erro\n    }\n};"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        976,
-        2656
-      ],
-      "id": "e554f1d5-214b-4a3e-b144-edb9f570275d",
-      "name": "Verifica Resposta 2 Sup"
-    },
-    {
-      "parameters": {
         "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "3caa2c5a-5c99-4f28-b169-b36b8d36e6ba",
-              "leftValue": "={{ $('Inform.').item.json.mensagem_6 }}",
-              "rightValue": "Ambos",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              }
-            }
-          ],
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+          "conditions": [{"id": "3caa2c5a-5c99-4f28-b169-b36b8d36e6ba", "leftValue": "={{ $('Inform.').item.json.mensagem_6 }}", "rightValue": "Ambos", "operator": {"type": "string", "operation": "notEquals"}}],
           "combinator": "and"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        640,
-        2272
-      ],
+      "position": [640, 2272],
       "id": "0a8911a6-384f-4659-869b-035735fcb091",
       "name": "If1"
     },
     {
       "parameters": {
         "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "97c090e4-0f1f-4aa0-a147-fdac57e894b7",
-              "leftValue": "={{ $json.valido }}",
-              "rightValue": "",
-              "operator": {
-                "type": "boolean",
-                "operation": "true",
-                "singleValue": true
-              }
-            }
-          ],
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+          "conditions": [{"id": "97c090e4-0f1f-4aa0-a147-fdac57e894b7", "leftValue": "={{ $json.valido }}", "rightValue": "", "operator": {"type": "boolean", "operation": "true", "singleValue": true}}],
           "combinator": "and"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        1264,
-        2656
-      ],
+      "position": [1264, 2656],
       "id": "76963d3b-4ce7-4a3f-be56-ede7f1db765f",
       "name": "Aceitavel?2"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{$node['Inform.'].json.apikey}}"
-            }
-          ]
-        },
+        "headerParameters": {"parameters": [{"name": "apikey", "value": "={{$node['Inform.'].json.apikey}}"}]},
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $node['Inform.'].json.remoteJid }}\",\n  \"text\": \"{{ $json.erro }}\",\n  \"delay\": 1200\n}",
@@ -1444,26 +909,18 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        1856,
-        2960
-      ],
+      "position": [1856, 2960],
       "id": "80e99219-ee45-4254-8841-155fb79487c6",
       "name": "Resposta Inválida4"
     },
     {
-      "parameters": {
-        "amount": "={{ $('Inform.').item.json.wait }}"
-      },
+      "parameters": {"amount": "={{ $('Inform.').item.json.wait }}"},
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "position": [
-        1600,
-        2960
-      ],
+      "position": [1600, 2960],
       "id": "de16f1f9-e53b-4759-abbd-bb11667057a3",
       "name": "Wait10",
-      "webhookId": "33f714d7-37d4-41d9-88e1-e30f2db401ef"
+      "webhookId": "YOUR_WEBHOOK_ID"
     },
     {
       "parameters": {
@@ -1473,187 +930,87 @@
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        1584,
-        2544
-      ],
+      "position": [1584, 2544],
       "id": "ef1a64ce-e7f7-490e-ae0f-0169f1280886",
       "name": "Salva estado da conversa5",
-      "credentials": {
-        "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
-          "name": "Postgres account"
-        }
-      }
+      "credentials": {"postgres": {"id": "YOUR_POSTGRES_CREDENTIAL_ID", "name": "Postgres account"}}
     },
     {
       "parameters": {
         "operation": "select",
-        "schema": {
-          "__rl": true,
-          "mode": "list",
-          "value": "public"
-        },
-        "table": {
-          "__rl": true,
-          "value": "conversas_chatbot",
-          "mode": "list",
-          "cachedResultName": "conversas_chatbot"
-        },
-        "where": {
-          "values": [
-            {
-              "column": "conversa_id",
-              "value": "={{ $node['Inform.'].json.remoteJid.slice(0,12) }}"
-            }
-          ]
-        },
+        "schema": {"__rl": true, "mode": "list", "value": "public"},
+        "table": {"__rl": true, "value": "conversas_chatbot", "mode": "list", "cachedResultName": "conversas_chatbot"},
+        "where": {"values": [{"column": "conversa_id", "value": "={{ $node['Inform.'].json.remoteJid.slice(0,12) }}"}]},
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        1808,
-        2544
-      ],
+      "position": [1808, 2544],
       "id": "6433ee7d-9615-4283-8579-a3b3141304b2",
       "name": "Pega todas as info.3",
       "alwaysOutputData": true,
-      "credentials": {
-        "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
-          "name": "Postgres account"
-        }
-      }
+      "credentials": {"postgres": {"id": "YOUR_POSTGRES_CREDENTIAL_ID", "name": "Postgres account"}}
     },
     {
-      "parameters": {
-        "amount": "={{ $('Inform.').item.json.wait }}"
-      },
+      "parameters": {"amount": "={{ $('Inform.').item.json.wait }}"},
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "position": [
-        2016,
-        2544
-      ],
+      "position": [2016, 2544],
       "id": "a57a64e7-5872-4b25-84f3-c0694bf266d4",
       "name": "Wait11",
-      "webhookId": "33f714d7-37d4-41d9-88e1-e30f2db401ef"
+      "webhookId": "YOUR_WEBHOOK_ID"
     },
     {
       "parameters": {
         "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "a946ed76-dc63-4d07-a49f-17f10ed5ed3e",
-              "leftValue": "={{$node['Pega todas as info.'].json.mensagem_6}}",
-              "rightValue": "Ambos",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              }
-            }
-          ],
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+          "conditions": [{"id": "a946ed76-dc63-4d07-a49f-17f10ed5ed3e", "leftValue": "={{$node['Pega todas as info.'].json.mensagem_6}}", "rightValue": "Ambos", "operator": {"type": "string", "operation": "notEquals"}}],
           "combinator": "and"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        3632,
-        1056
-      ],
+      "position": [3632, 1056],
       "id": "4467403a-513f-4e7e-922e-5c2f360aeea5",
       "name": "If3"
     },
     {
       "parameters": {
         "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "49e18ee7-db8a-4871-a66f-230fcb0abf88",
-              "leftValue": "={{$json.mensagem_6}}",
-              "rightValue": "Ambos",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+          "conditions": [{"id": "49e18ee7-db8a-4871-a66f-230fcb0abf88", "leftValue": "={{$json.mensagem_6}}", "rightValue": "Ambos", "operator": {"type": "string", "operation": "equals", "name": "filter.operator.equals"}}],
           "combinator": "and"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        2224,
-        2544
-      ],
+      "position": [2224, 2544],
       "id": "eb0ef042-36bd-425e-b188-b2fcf087d08a",
       "name": "Ambos?"
     },
     {
       "parameters": {
         "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "49e18ee7-db8a-4871-a66f-230fcb0abf88",
-              "leftValue": "={{$json.mensagem_6}}",
-              "rightValue": "Ambos",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+          "conditions": [{"id": "49e18ee7-db8a-4871-a66f-230fcb0abf88", "leftValue": "={{$json.mensagem_6}}", "rightValue": "Ambos", "operator": {"type": "string", "operation": "equals", "name": "filter.operator.equals"}}],
           "combinator": "and"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        2208,
-        2048
-      ],
+      "position": [2208, 2048],
       "id": "0f06450d-338a-49e4-9269-44860486b355",
       "name": "Ambos?1"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{$node['Inform.'].json.apikey}}"
-            }
-          ]
-        },
+        "headerParameters": {"parameters": [{"name": "apikey", "value": "={{$node['Inform.'].json.apikey}}"}]},
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $node['Inform.'].json.remoteJid }}\",\n  \"text\": \"{{$node['Inform.'].json.data[$json.etapa.toNumber()].content}}\",\n  \"delay\": 1200\n}\n",
@@ -1661,10 +1018,7 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        2432,
-        1952
-      ],
+      "position": [2432, 1952],
       "id": "5b3f5b82-27a7-42d2-b9b7-aea3ce79c4c1",
       "name": "Pergunta Preço de Novo1"
     },
@@ -1676,32 +1030,17 @@
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        1584,
-        2048
-      ],
+      "position": [1584, 2048],
       "id": "841ea269-b7a4-472e-93e7-d6522e73c699",
       "name": "Salva estado da conversa4",
-      "credentials": {
-        "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
-          "name": "Postgres account"
-        }
-      }
+      "credentials": {"postgres": {"id": "YOUR_POSTGRES_CREDENTIAL_ID", "name": "Postgres account"}}
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{$node['Inform.'].json.apikey}}"
-            }
-          ]
-        },
+        "headerParameters": {"parameters": [{"name": "apikey", "value": "={{$node['Inform.'].json.apikey}}"}]},
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $node['Inform.'].json.remoteJid }}\",\n  \"text\": \"{{ $('Inform.').item.json.data[$json.etapa.toNumber()].content }}\",\n  \"delay\": 1200\n}\n",
@@ -1709,26 +1048,16 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        2896,
-        2704
-      ],
+      "position": [2896, 2704],
       "id": "a17e284f-de05-45fa-9405-46b0bdc3a9e1",
       "name": "Envia Pergunta Atual1"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{$node['Inform.'].json.apikey}}"
-            }
-          ]
-        },
+        "headerParameters": {"parameters": [{"name": "apikey", "value": "={{$node['Inform.'].json.apikey}}"}]},
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $node['Inform.'].json.remoteJid }}\",\n  \"text\": \"Perfeito 😄!\\nAqui está o resumo das informações que você me passou:\\n\\n*1️⃣ Nome do evento:* {{ $json.mensagem_2 }}\\n*2️⃣ Endereço:* {{ $json.mensagem_3 }}\\n*3️⃣ Data do evento:* {{ $json.mensagem_4 }}\\n*4️⃣ Horário:* {{ $json.mensagem_5 }}\\n*5️⃣ Tipo de suporte:* {{ $json.mensagem_6 }}\\n*6️⃣ Valor Básico:* {{ $json.mensagem_12 }}\\n*7️⃣ Valor Avançado:* {{ $json.mensagem_13 }}\\n*8️⃣ Validade da proposta:* {{ $json.mensagem_7 }}\\n\\nEstá tudo correto ?\\n\\nPor favor, responda com *sim* ou *não* ✅\",\n  \"delay\": 1200\n}\n",
@@ -1736,10 +1065,7 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        2896,
-        2336
-      ],
+      "position": [2896, 2336],
       "id": "670c9ff7-5f29-4cbb-bdae-503e2ba02457",
       "name": "Confirma Info"
     },
@@ -1751,18 +1077,10 @@
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        3120,
-        2704
-      ],
+      "position": [3120, 2704],
       "id": "0d598d9c-2995-4cce-8e58-51243b08eb83",
       "name": "Salva estado da conversa6",
-      "credentials": {
-        "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
-          "name": "Postgres account"
-        }
-      }
+      "credentials": {"postgres": {"id": "YOUR_POSTGRES_CREDENTIAL_ID", "name": "Postgres account"}}
     },
     {
       "parameters": {
@@ -1772,29 +1090,18 @@
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        2656,
-        1952
-      ],
+      "position": [2656, 1952],
       "id": "be5cce24-921a-44ee-b8a2-957b19c09b60",
       "name": "Salva estado da conversa7",
-      "credentials": {
-        "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
-          "name": "Postgres account"
-        }
-      }
+      "credentials": {"postgres": {"id": "YOUR_POSTGRES_CREDENTIAL_ID", "name": "Postgres account"}}
     },
     {
       "parameters": {
-        "jsCode": "// Extrai horas\nconst horarioBruto = info.mensagem_5;\nconst [horaInicialStr, horaFinalStr] = horarioBruto.split(/-|às/).map(s => s.trim());\n\n// Converte a data dd/mm/yyyy\nconst dataBase = new Date(mensagem4.split('/').reverse().join('-'));\n\n// Data + hora\nconst [hIni, mIni] = horaInicialStr.split(':').map(Number);\nconst dataComHoraInicial = new Date(dataBase);\ndataComHoraInicial.setHours(hIni, mIni, 0, 0);\n\nconst [hFim, mFim] = horaFinalStr.split(':').map(Number);\nconst dataComHoraFinal = new Date(dataBase);\ndataComHoraFinal.setHours(hFim, mFim, 0, 0);\n\n// Ajuste fuso\nconst timestampFinal = dataComHoraInicial.getTime() + (3 * 60 * 60 * 1000);\nconst timestampFinal2 = dataComHoraFinal.getTime() + (3 * 60 * 60 * 1000);\n\nfunction campo(id, value, isDate = false) {\n  return {\n    id,\n    body: isDate\n      ? { value, value_options: { time: true } }\n      : { value }\n  };\n}\n\nreturn [\n  campo(\"3df1b674-de74-4fcd-bb4d-37340e48f2fb\", timestampFinal, true), // DATE\n  campo(\"1ff08e74-88c6-42b8-98da-bb2bbd634155\", timestampFinal2, true),\n\n  campo(\n    \"360e11ab-2bb9-4b00-9cca-4db83fd972bc\",\n    $node['Pega todas as info.'].json.mensagem_3\n  ),\n\n  campo(\n    \"9e6d0d93-f375-4dcf-9ec4-441ceba2ca1f\",\n    $node['Pega todas as info.'].json.mensagem_5.replaceAll(\"-\", \"às\")\n  ),\n\n  campo(\n    \"dac0519e-6b4f-4b57-9cb1-1e3a1c6a72f2\",\n    (() => {\n      const msg6 = $node['Pega todas as info.'].json.mensagem_6;\n      const normalized = msg6?.toLowerCase().normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\");\n      if (normalized === \"basico\") return [\"3b224d45-a8b4-4286-b68e-bb42a47d7867\"];\n      if (normalized === \"avancado\") return [\"2fafcba9-fd5f-42a3-baba-0b689735a8ba\"];\n      return [\"2fafcba9-fd5f-42a3-baba-0b689735a8ba\",\"3b224d45-a8b4-4286-b68e-bb42a47d7867\"];\n    })()\n  ),\n\n  campo(\n    \"96c358d0-4271-48b1-a628-c7215ad0801e\",\n    parseFloat(\n      $node['Pega todas as info.'].json.mensagem_7\n        .replace(/[^\\d.,]/g, \"\")\n        .replace(/\\.(?=\\d{3,})/g, \"\")\n        .replace(\",\", \".\")\n    )\n  ),\n\n  campo(\n    \"24014529-fbe1-4c2a-a32f-f0f37ba84b90\",\n    parseFloat(\n      $('Pega todas as info.').first().json.mensagem_13\n        .replace(/[^\\d.,]/g, \"\")\n        .replace(/\\.(?=\\d{3,})/g, \"\")\n        .replace(\",\", \".\")\n    )\n  ),\n\n  campo(\n    \"1af39360-dfbd-4e46-a5a6-a5e9273b986b\",\n    parseFloat(\n      $('Pega todas as info.').first().json.mensagem_12\n        .replace(/[^\\d.,]/g, \"\")\n        .replace(/\\.(?=\\d{3,})/g, \"\")\n        .replace(\",\", \".\")\n    )\n  )\n];\n"
+        "jsCode": "const info = $('Pega todas as info.').first().json;\nconst mensagem4 = info.mensagem_4;\nconst horarioBruto = info.mensagem_5;\nconst [horaInicialStr, horaFinalStr] = horarioBruto.split(/-|às/).map(s => s.trim());\n\nconst dataBase = new Date(mensagem4.split('/').reverse().join('-'));\n\nconst [hIni, mIni] = horaInicialStr.split(':').map(Number);\nconst dataComHoraInicial = new Date(dataBase);\ndataComHoraInicial.setHours(hIni, mIni, 0, 0);\n\nconst [hFim, mFim] = horaFinalStr.split(':').map(Number);\nconst dataComHoraFinal = new Date(dataBase);\ndataComHoraFinal.setHours(hFim, mFim, 0, 0);\n\nconst timestampFinal = dataComHoraInicial.getTime() + (3 * 60 * 60 * 1000);\nconst timestampFinal2 = dataComHoraFinal.getTime() + (3 * 60 * 60 * 1000);\n\nfunction campo(id, value, isDate = false) {\n  return {\n    id,\n    body: isDate\n      ? { value, value_options: { time: true } }\n      : { value }\n  };\n}\n\nreturn [\n  campo(\"YOUR_CLICKUP_FIELD_DATE_START_ID\", timestampFinal, true),\n  campo(\"YOUR_CLICKUP_FIELD_DATE_END_ID\", timestampFinal2, true),\n  campo(\"YOUR_CLICKUP_FIELD_ENDERECO_ID\", info.mensagem_3),\n  campo(\"YOUR_CLICKUP_FIELD_HORARIO_ID\", info.mensagem_5.replaceAll(\"-\", \"às\")),\n  campo(\n    \"YOUR_CLICKUP_FIELD_TIPO_SUPORTE_ID\",\n    (() => {\n      const msg6 = info.mensagem_6;\n      const normalized = msg6?.toLowerCase().normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\");\n      if (normalized === \"basico\") return [\"YOUR_CLICKUP_OPTION_BASICO_ID\"];\n      if (normalized === \"avancado\") return [\"YOUR_CLICKUP_OPTION_AVANCADO_ID\"];\n      return [\"YOUR_CLICKUP_OPTION_AVANCADO_ID\", \"YOUR_CLICKUP_OPTION_BASICO_ID\"];\n    })()\n  ),\n  campo(\n    \"YOUR_CLICKUP_FIELD_VALIDADE_ID\",\n    parseFloat(info.mensagem_7.replace(/[^\\d.,]/g, \"\").replace(/\\.(?=\\d{3,})/g, \"\").replace(\",\", \".\"))\n  ),\n  campo(\n    \"YOUR_CLICKUP_FIELD_VALOR_AVANCADO_ID\",\n    parseFloat(info.mensagem_13.replace(/[^\\d.,]/g, \"\").replace(/\\.(?=\\d{3,})/g, \"\").replace(\",\", \".\"))\n  ),\n  campo(\n    \"YOUR_CLICKUP_FIELD_VALOR_BASICO_ID\",\n    parseFloat(info.mensagem_12.replace(/[^\\d.,]/g, \"\").replace(/\\.(?=\\d{3,})/g, \"\").replace(\",\", \".\"))\n  )\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        3904,
-        1296
-      ],
+      "position": [3904, 1296],
       "id": "7824f575-a767-4fa3-b25b-fc9800bb8da9",
       "name": "array de campos 2 SUP"
     },
@@ -1802,7 +1109,7 @@
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "fq5ymcybLFH9BCOT",
+          "value": "YOUR_SUBWORKFLOW_ID",
           "mode": "id"
         },
         "workflowInputs": {
@@ -1813,32 +1120,20 @@
           "attemptToConvertTypes": false,
           "convertFieldsToString": true
         },
-        "options": {
-          "waitForSubWorkflow": true
-        }
+        "options": {"waitForSubWorkflow": true}
       },
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
-      "position": [
-        5504,
-        992
-      ],
+      "position": [5504, 992],
       "id": "19abb858-b74c-47fa-810a-bcb51a32b67f",
       "name": "Gera PDF"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendMedia/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendMedia/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{$node['Inform.'].json.apikey}}"
-            }
-          ]
-        },
+        "headerParameters": {"parameters": [{"name": "apikey", "value": "={{$node['Inform.'].json.apikey}}"}]},
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $node['Inform.'].json.remoteJid }}\",\n   \"mediatype\": \"document\",\n   \"mimetype\": \"pdf\",\n   \"caption\": \"🎉 Aqui está o pdf gerado do orçamento!\\n Até mais!\",\n   \"media\":\"{{ $json.data }}\",\n   \"fileName\": \"Orçamento.pdf\",\n    \"delay\": 1200\n}",
@@ -1846,10 +1141,7 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        5760,
-        992
-      ],
+      "position": [5760, 992],
       "id": "ecd44b2b-8505-47e8-b31a-192a45bbd453",
       "name": "Avisa que Tarefa foi criada no Click Up1",
       "executeOnce": true
@@ -1858,51 +1150,31 @@
       "parameters": {
         "assignments": {
           "assignments": [
-            {
-              "id": "f18665c2-f299-4255-9ea8-6de81a8a8bc8",
-              "name": "task_id",
-              "value": "={{ $('Create a task1').item.json.id }}",
-              "type": "string"
-            }
+            {"id": "f18665c2-f299-4255-9ea8-6de81a8a8bc8", "name": "task_id", "value": "={{ $('Create a task1').item.json.id }}", "type": "string"}
           ]
         },
         "options": {}
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [
-        5296,
-        992
-      ],
+      "position": [5296, 992],
       "id": "ea5cfcfb-9383-4c96-8c6d-fd65ea1987dc",
       "name": "Pega ID do PDF"
     },
     {
-      "parameters": {
-        "inputSource": "passthrough"
-      },
+      "parameters": {"inputSource": "passthrough"},
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
-      "position": [
-        -768,
-        672
-      ],
+      "position": [-768, 672],
       "id": "c821cde5-02ba-45c7-b1cd-e3c1850f0eac",
       "name": "Inform."
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://evolution.simplificagest.com/message/sendText/{{$node['Inform.'].json.instance}}",
+        "url": "=https://evolution.SEU_DOMINIO.com/message/sendText/{{$node['Inform.'].json.instance}}",
         "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "={{$node['Inform.'].json.apikey}}"
-            }
-          ]
-        },
+        "headerParameters": {"parameters": [{"name": "apikey", "value": "={{$node['Inform.'].json.apikey}}"}]},
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"number\": \"{{ $node['Inform.'].json.remoteJid }}\",\n  \"text\": \"Me informa a numeração do campo que você deseja corrigir e seu respectivo valor, por favor. Nesse estilo: '1 - Novo Nome do Evento'\",\n  \"delay\": 1200\n}\n",
@@ -1910,10 +1182,7 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        1808,
-        1424
-      ],
+      "position": [1808, 1424],
       "id": "bc3333e1-18c0-442f-9f1d-b2efe1397fe3",
       "name": "Pergunta qual campo quer editar"
     },
@@ -1930,20 +1199,13 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        4432,
-        1152
-      ],
+      "position": [4432, 1152],
       "id": "23f4d835-0bf2-47b1-b710-4018a7a6ab55",
       "name": "Update Custom Fields",
       "credentials": {
-        "clickUpOAuth2Api": {
-          "id": "furydvZAXG5lUlHU",
-          "name": "IS/HPSM"
-        },
         "clickUpApi": {
-          "id": "wuxlYZ9RlhAamScT",
-          "name": "Elaine Simplfica"
+          "id": "YOUR_CLICKUP_CREDENTIAL_ID",
+          "name": "ClickUp Account"
         }
       }
     },
@@ -1955,1016 +1217,88 @@
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
-      "position": [
-        2656,
-        2144
-      ],
+      "position": [2656, 2144],
       "id": "93c14ea2-fb16-4347-9541-1b6aa62bfde4",
       "name": "Salva estado da conversa",
-      "credentials": {
-        "postgres": {
-          "id": "UKHBUL8vWO8bM3Bh",
-          "name": "Postgres account"
-        }
-      }
+      "credentials": {"postgres": {"id": "YOUR_POSTGRES_CREDENTIAL_ID", "name": "Postgres account"}}
     }
   ],
-  "pinData": {
-    "Confirma Informações1": [
-      {
-        "json": {
-          "key": {
-            "remoteJid": "558499258285@s.whatsapp.net",
-            "fromMe": true,
-            "id": "3EB08EDC8C3E3D277E624E"
-          },
-          "pushName": "Você",
-          "status": "PENDING",
-          "message": {
-            "conversation": "Perfeito 😄!\nAqui está o resumo das informações que você me passou:\n\n*1️⃣ Nome do evento:* Corrida Simplifica\n*2️⃣ Endereço:* Estádio\n*3️⃣ Data do evento:* 12/12/2025\n*4️⃣ Horário:* 13:00 - 15:00\n*5️⃣ Tipo de suporte:* Avançado\n*6️⃣ Valor:* R$ 1.200,00\n*7️⃣ Validade da proposta:* 7 dias\n\nEstá tudo correto ?\n\nPor favor, responda com *sim* ou *não* ✅"
-          },
-          "contextInfo": {
-            "mentionedJid": [],
-            "groupMentions": [],
-            "ephemeralSettingTimestamp": {
-              "low": 1763385512,
-              "high": 0,
-              "unsigned": false
-            },
-            "disappearingMode": {
-              "initiator": 0
-            }
-          },
-          "messageType": "conversation",
-          "messageTimestamp": 1763558312,
-          "instanceId": "c5f7e5c5-0af2-4635-b065-ef3deaed3791",
-          "source": "web"
-        }
-      }
-    ],
-    "Salva estado da conversa4": [
-      {
-        "json": {
-          "success": true
-        }
-      }
-    ],
-    "Pega todas as info.1": [
-      {
-        "json": {
-          "conversa_id": "200502008631",
-          "mensagem_1": "1",
-          "mensagem_2": "Corrida Simplifica",
-          "mensagem_3": "Estádio",
-          "mensagem_4": "12/12/2025",
-          "mensagem_5": "13:00 - 15:00",
-          "data_modificacao": "2025-11-19T13:18:26.646Z",
-          "etapa": "12",
-          "mensagem_6": "Avançado",
-          "mensagem_7": "7 dias",
-          "mensagem_8": "R$ 1.200,00",
-          "mensagem_9": null,
-          "mensagem_12": null,
-          "mensagem_13": null
-        }
-      }
-    ],
-    "Inform.": [
-      {
-        "json": {
-          "data": [
-            {
-              "index": 0,
-              "content": "Olá 👋! Que bom te ver por aqui. Estou pronto para te ajudar com orçamentos.\\n\\nDigite o número da opção que deseja:\\n1️⃣ Criar um novo orçamento\\n2️⃣ Editar um orçamento existente\\n3️⃣ Criar um orçamento a partir de um antigo",
-              "validator": "options_1_2_3"
-            },
-            {
-              "index": 1,
-              "content": "Vamos começar então! Qual é o nome do evento?",
-              "validator": "text"
-            },
-            {
-              "index": 2,
-              "content": "Perfeito 😄, agora poderia me informar o endereço que o evento vai acontecer?",
-              "validator": "text"
-            },
-            {
-              "index": 3,
-              "content": "Qual é a data do evento?",
-              "validator": "date"
-            },
-            {
-              "index": 4,
-              "content": "Qual será o horário do evento? Por favor, informe a hora inicial e a hora final.",
-              "validator": "time"
-            },
-            {
-              "index": 5,
-              "content": "Certinho 👍 Agora me conta: qual é o tipo de evento? É suporte básico ou avançado?",
-              "validator": "enum:basico,avancado"
-            },
-            {
-              "index": 6,
-              "content": "Ótimo 😄 Qual será a validade da proposta, em dias ?",
-              "validator": "prazo"
-            },
-            {
-              "index": 7,
-              "content": "Beleza! E qual será o valor do evento?",
-              "validator": "number"
-            },
-            {
-              "index": 8,
-              "content": "🎉 Tudo certo! Estou finalizando o processamento das informações. Daqui a pouquinho o seu orçamento em PDF estará pronto!",
-              "validator": null
-            },
-            {
-              "index": 9,
-              "content": "Confirmação de Informações",
-              "validator": "yesno"
-            },
-            {
-              "index": 10,
-              "content": "Escolher Opções para editar",
-              "validator": "options_1_7"
-            },
-            {
-              "index": 11,
-              "content": "PROCESSANDO INFORMAÇÕES",
-              "validator": null
-            },
-            {
-              "index": 12,
-              "content": "Certo! Para eu prosseguir, poderia me confirmar o valor do suporte básico?",
-              "validator": "number"
-            },
-            {
-              "index": 13,
-              "content": "Show! Agora me confirma o valor do suporte avançado, por gentileza? 😄",
-              "validator": "number"
-            }
-          ],
-          "instance": "simplicio_teste",
-          "apikey": "429683C4C977415CAAFCCE10F7D57E11",
-          "wait": "3.2",
-          "conversa_id": "242472479359",
-          "mensagem_1": "1",
-          "mensagem_2": "Show",
-          "mensagem_3": "FormaBliss - R. Trinta e Um de Março, 1941 - Ininga",
-          "mensagem_4": "31/01/2026",
-          "mensagem_5": "21:00 - 05:00",
-          "data_modificacao": "2026-01-06T20:33:23.267Z",
-          "etapa": "9",
-          "mensagem_6": "Básico",
-          "mensagem_7": "20 dias",
-          "mensagem_8": "R$ 1.450,00",
-          "mensagem_9": null,
-          "mensagem_12": null,
-          "mensagem_13": null,
-          "respostaWpp": "Sim",
-          "remoteJid": "242472479359171@lid"
-        }
-      }
-    ],
-    "Salva estado da conversa2": [
-      {
-        "json": {
-          "success": true
-        }
-      }
-    ],
-    "Pega todas as info.": [
-      {
-        "json": {
-          "conversa_id": "242472479359",
-          "mensagem_1": "1",
-          "mensagem_2": "Show",
-          "mensagem_3": "FormaBliss - R. Trinta e Um de Março, 1941 - Ininga",
-          "mensagem_4": "31/01/2026",
-          "mensagem_5": "21:00 - 05:00",
-          "data_modificacao": "2026-01-06T20:33:38.232Z",
-          "etapa": "11",
-          "mensagem_6": "Básico",
-          "mensagem_7": "20 dias",
-          "mensagem_8": "R$ 1.450,00",
-          "mensagem_9": null,
-          "mensagem_12": null,
-          "mensagem_13": null
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "connections": {
-    "Validador de resposta": {
-      "main": [
-        [
-          {
-            "node": "Verifica respostas",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aceita?": {
-      "main": [
-        [
-          {
-            "node": "Switch1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Wait",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait": {
-      "main": [
-        [
-          {
-            "node": "Resposta Inválida",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait1": {
-      "main": [
-        [
-          {
-            "node": "Envia Pergunta Atual",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Envia Pergunta Atual": {
-      "main": [
-        [
-          {
-            "node": "Salva estado da conversa1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Salva estado da conversa1": {
-      "main": [
-        [
-          {
-            "node": "Processar informações?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait3": {
-      "main": [
-        [
-          {
-            "node": "Aguarde o Processamento",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Processar informações?": {
-      "main": [
-        [
-          {
-            "node": "Pega todas as info.2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Pega todas as info.": {
-      "main": [
-        [
-          {
-            "node": "Get many tasks",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get many tasks": {
-      "main": [
-        [
-          {
-            "node": "Filter",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filter": {
-      "main": [
-        [
-          {
-            "node": "Organiza",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Organiza": {
-      "main": [
-        [
-          {
-            "node": "Gera ID novo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Gera ID novo": {
-      "main": [
-        [
-          {
-            "node": "Create a task1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create a task1": {
-      "main": [
-        [
-          {
-            "node": "If3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "array de campos": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items": {
-      "main": [
-        [
-          {
-            "node": "No Operation, do nothing",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Update Custom Fields",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Delay de Update": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "No Operation, do nothing": {
-      "main": [
-        [
-          {
-            "node": "Avisa que Tarefa foi criada no Click Up",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Verifica respostas": {
-      "main": [
-        [
-          {
-            "node": "Aceita?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch": {
-      "main": [
-        [
-          {
-            "node": "Wait3",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Validador de resposta",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Validador de resposta1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Validador de resposta2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Validador de resposta1": {
-      "main": [
-        [
-          {
-            "node": "Verifica respostas1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Verifica respostas1": {
-      "main": [
-        [
-          {
-            "node": "Aceitavel?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aceitavel?": {
-      "main": [
-        [
-          {
-            "node": "Sim ou Nao",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Wait4",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait4": {
-      "main": [
-        [
-          {
-            "node": "Resposta Inválida1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Sim ou Nao": {
-      "main": [
-        [
-          {
-            "node": "Salva estado da conversa2",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Wait5",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Salva estado da conversa2": {
-      "main": [
-        [
-          {
-            "node": "Pega todas as info.",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait5": {
-      "main": [
-        [
-          {
-            "node": "Pergunta qual campo quer editar",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Validador de resposta2": {
-      "main": [
-        [
-          {
-            "node": "If1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aceitavel?1": {
-      "main": [
-        [
-          {
-            "node": "Salva estado da conversa4",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Wait6",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait6": {
-      "main": [
-        [
-          {
-            "node": "Resposta Inválida3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Pega todas as info.1": {
-      "main": [
-        [
-          {
-            "node": "Wait8",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait7": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Pega todas as info.2": {
-      "main": [
-        [
-          {
-            "node": "Wait7",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait8": {
-      "main": [
-        [
-          {
-            "node": "Ambos?1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Avisa que Tarefa foi criada no Click Up": {
-      "main": [
-        [
-          {
-            "node": "Pega ID do PDF",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait9": {
-      "main": [
-        [
-          {
-            "node": "Pergunta Valor de Suportes",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Pergunta Valor de Suportes": {
-      "main": [
-        [
-          {
-            "node": "Salva Suporte Básico",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch1": {
-      "main": [
-        [
-          {
-            "node": "Salva Suporte Avançado",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Wait9",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Wait1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Salva Suporte Avançado": {
-      "main": [
-        [
-          {
-            "node": "Pega todas as info.2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "Confirma Informações BA",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Confirma Informações",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Verifica Resposta 1 Sup": {
-      "main": [
-        [
-          {
-            "node": "Aceitavel?1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Verifica Resposta 2 Sup": {
-      "main": [
-        [
-          {
-            "node": "Aceitavel?2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If1": {
-      "main": [
-        [
-          {
-            "node": "Verifica Resposta 1 Sup",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Verifica Resposta 2 Sup",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aceitavel?2": {
-      "main": [
-        [
-          {
-            "node": "Salva estado da conversa5",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Wait10",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait10": {
-      "main": [
-        [
-          {
-            "node": "Resposta Inválida4",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Salva estado da conversa5": {
-      "main": [
-        [
-          {
-            "node": "Pega todas as info.3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Pega todas as info.3": {
-      "main": [
-        [
-          {
-            "node": "Wait11",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait11": {
-      "main": [
-        [
-          {
-            "node": "Ambos?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If3": {
-      "main": [
-        [
-          {
-            "node": "array de campos",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "array de campos 2 SUP",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Ambos?": {
-      "main": [
-        [
-          {
-            "node": "Confirma Info",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Envia Pergunta Atual1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Ambos?1": {
-      "main": [
-        [
-          {
-            "node": "Pergunta Preço de Novo1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Confirma Informações1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Pergunta Preço de Novo1": {
-      "main": [
-        [
-          {
-            "node": "Salva estado da conversa7",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Salva estado da conversa4": {
-      "main": [
-        [
-          {
-            "node": "Pega todas as info.1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Envia Pergunta Atual1": {
-      "main": [
-        [
-          {
-            "node": "Salva estado da conversa6",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "array de campos 2 SUP": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Gera PDF": {
-      "main": [
-        [
-          {
-            "node": "Avisa que Tarefa foi criada no Click Up1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Avisa que Tarefa foi criada no Click Up1": {
-      "main": [
-        [
-          {
-            "node": "Remove Histórico de conversa",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Pega ID do PDF": {
-      "main": [
-        [
-          {
-            "node": "Gera PDF",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Inform.": {
-      "main": [
-        [
-          {
-            "node": "Switch",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Pergunta qual campo quer editar": {
-      "main": [
-        [
-          {
-            "node": "Salva estado da conversa3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Update Custom Fields": {
-      "main": [
-        [
-          {
-            "node": "Delay de Update",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Confirma Informações1": {
-      "main": [
-        [
-          {
-            "node": "Salva estado da conversa",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
+    "Validador de resposta": {"main": [[{"node": "Verifica respostas", "type": "main", "index": 0}]]},
+    "Aceita?": {"main": [[{"node": "Switch1", "type": "main", "index": 0}], [{"node": "Wait", "type": "main", "index": 0}]]},
+    "Wait": {"main": [[{"node": "Resposta Inválida", "type": "main", "index": 0}]]},
+    "Wait1": {"main": [[{"node": "Envia Pergunta Atual", "type": "main", "index": 0}]]},
+    "Envia Pergunta Atual": {"main": [[{"node": "Salva estado da conversa1", "type": "main", "index": 0}]]},
+    "Salva estado da conversa1": {"main": [[{"node": "Processar informações?", "type": "main", "index": 0}]]},
+    "Wait3": {"main": [[{"node": "Aguarde o Processamento", "type": "main", "index": 0}]]},
+    "Processar informações?": {"main": [[{"node": "Pega todas as info.2", "type": "main", "index": 0}]]},
+    "Pega todas as info.": {"main": [[{"node": "Get many tasks", "type": "main", "index": 0}]]},
+    "Get many tasks": {"main": [[{"node": "Filter", "type": "main", "index": 0}]]},
+    "Filter": {"main": [[{"node": "Organiza", "type": "main", "index": 0}]]},
+    "Organiza": {"main": [[{"node": "Gera ID novo", "type": "main", "index": 0}]]},
+    "Gera ID novo": {"main": [[{"node": "Create a task1", "type": "main", "index": 0}]]},
+    "Create a task1": {"main": [[{"node": "If3", "type": "main", "index": 0}]]},
+    "array de campos": {"main": [[{"node": "Loop Over Items", "type": "main", "index": 0}]]},
+    "Loop Over Items": {"main": [[{"node": "No Operation, do nothing", "type": "main", "index": 0}], [{"node": "Update Custom Fields", "type": "main", "index": 0}]]},
+    "Delay de Update": {"main": [[{"node": "Loop Over Items", "type": "main", "index": 0}]]},
+    "No Operation, do nothing": {"main": [[{"node": "Avisa que Tarefa foi criada no Click Up", "type": "main", "index": 0}]]},
+    "Verifica respostas": {"main": [[{"node": "Aceita?", "type": "main", "index": 0}]]},
+    "Switch": {"main": [[{"node": "Wait3", "type": "main", "index": 0}], [{"node": "Validador de resposta", "type": "main", "index": 0}], [{"node": "Validador de resposta1", "type": "main", "index": 0}], [{"node": "Validador de resposta2", "type": "main", "index": 0}]]},
+    "Validador de resposta1": {"main": [[{"node": "Verifica respostas1", "type": "main", "index": 0}]]},
+    "Verifica respostas1": {"main": [[{"node": "Aceitavel?", "type": "main", "index": 0}]]},
+    "Aceitavel?": {"main": [[{"node": "Sim ou Nao", "type": "main", "index": 0}], [{"node": "Wait4", "type": "main", "index": 0}]]},
+    "Wait4": {"main": [[{"node": "Resposta Inválida1", "type": "main", "index": 0}]]},
+    "Sim ou Nao": {"main": [[{"node": "Salva estado da conversa2", "type": "main", "index": 0}], [{"node": "Wait5", "type": "main", "index": 0}]]},
+    "Salva estado da conversa2": {"main": [[{"node": "Pega todas as info.", "type": "main", "index": 0}]]},
+    "Wait5": {"main": [[{"node": "Pergunta qual campo quer editar", "type": "main", "index": 0}]]},
+    "Validador de resposta2": {"main": [[{"node": "If1", "type": "main", "index": 0}]]},
+    "Aceitavel?1": {"main": [[{"node": "Salva estado da conversa4", "type": "main", "index": 0}], [{"node": "Wait6", "type": "main", "index": 0}]]},
+    "Wait6": {"main": [[{"node": "Resposta Inválida3", "type": "main", "index": 0}]]},
+    "Pega todas as info.1": {"main": [[{"node": "Wait8", "type": "main", "index": 0}]]},
+    "Wait7": {"main": [[{"node": "If", "type": "main", "index": 0}]]},
+    "Pega todas as info.2": {"main": [[{"node": "Wait7", "type": "main", "index": 0}]]},
+    "Wait8": {"main": [[{"node": "Ambos?1", "type": "main", "index": 0}]]},
+    "Avisa que Tarefa foi criada no Click Up": {"main": [[{"node": "Pega ID do PDF", "type": "main", "index": 0}]]},
+    "Wait9": {"main": [[{"node": "Pergunta Valor de Suportes", "type": "main", "index": 0}]]},
+    "Pergunta Valor de Suportes": {"main": [[{"node": "Salva Suporte Básico", "type": "main", "index": 0}]]},
+    "Switch1": {"main": [[{"node": "Salva Suporte Avançado", "type": "main", "index": 0}], [{"node": "Wait9", "type": "main", "index": 0}], [{"node": "Wait1", "type": "main", "index": 0}]]},
+    "Salva Suporte Avançado": {"main": [[{"node": "Pega todas as info.2", "type": "main", "index": 0}]]},
+    "If": {"main": [[{"node": "Confirma Informações BA", "type": "main", "index": 0}], [{"node": "Confirma Informações", "type": "main", "index": 0}]]},
+    "Verifica Resposta 1 Sup": {"main": [[{"node": "Aceitavel?1", "type": "main", "index": 0}]]},
+    "Verifica Resposta 2 Sup": {"main": [[{"node": "Aceitavel?2", "type": "main", "index": 0}]]},
+    "If1": {"main": [[{"node": "Verifica Resposta 1 Sup", "type": "main", "index": 0}], [{"node": "Verifica Resposta 2 Sup", "type": "main", "index": 0}]]},
+    "Aceitavel?2": {"main": [[{"node": "Salva estado da conversa5", "type": "main", "index": 0}], [{"node": "Wait10", "type": "main", "index": 0}]]},
+    "Wait10": {"main": [[{"node": "Resposta Inválida4", "type": "main", "index": 0}]]},
+    "Salva estado da conversa5": {"main": [[{"node": "Pega todas as info.3", "type": "main", "index": 0}]]},
+    "Pega todas as info.3": {"main": [[{"node": "Wait11", "type": "main", "index": 0}]]},
+    "Wait11": {"main": [[{"node": "Ambos?", "type": "main", "index": 0}]]},
+    "If3": {"main": [[{"node": "array de campos", "type": "main", "index": 0}], [{"node": "array de campos 2 SUP", "type": "main", "index": 0}]]},
+    "Ambos?": {"main": [[{"node": "Confirma Info", "type": "main", "index": 0}], [{"node": "Envia Pergunta Atual1", "type": "main", "index": 0}]]},
+    "Ambos?1": {"main": [[{"node": "Pergunta Preço de Novo1", "type": "main", "index": 0}], [{"node": "Confirma Informações1", "type": "main", "index": 0}]]},
+    "Pergunta Preço de Novo1": {"main": [[{"node": "Salva estado da conversa7", "type": "main", "index": 0}]]},
+    "Salva estado da conversa4": {"main": [[{"node": "Pega todas as info.1", "type": "main", "index": 0}]]},
+    "Envia Pergunta Atual1": {"main": [[{"node": "Salva estado da conversa6", "type": "main", "index": 0}]]},
+    "array de campos 2 SUP": {"main": [[{"node": "Loop Over Items", "type": "main", "index": 0}]]},
+    "Gera PDF": {"main": [[{"node": "Avisa que Tarefa foi criada no Click Up1", "type": "main", "index": 0}]]},
+    "Avisa que Tarefa foi criada no Click Up1": {"main": [[{"node": "Remove Histórico de conversa", "type": "main", "index": 0}]]},
+    "Pega ID do PDF": {"main": [[{"node": "Gera PDF", "type": "main", "index": 0}]]},
+    "Inform.": {"main": [[{"node": "Switch", "type": "main", "index": 0}]]},
+    "Pergunta qual campo quer editar": {"main": [[{"node": "Salva estado da conversa3", "type": "main", "index": 0}]]},
+    "Update Custom Fields": {"main": [[{"node": "Delay de Update", "type": "main", "index": 0}]]},
+    "Confirma Informações1": {"main": [[{"node": "Salva estado da conversa", "type": "main", "index": 0}]]}
   },
   "active": false,
-  "settings": {
-    "executionOrder": "v1"
-  },
+  "settings": {"executionOrder": "v1"},
   "versionId": "e1a9ac11-fd75-40e0-b241-84abb59b94ac",
-  "meta": {
-    "instanceId": "ed448110c2f52335930f4a47b55f0143ece4c7ed5b8e212395558525801fe931"
-  },
-  "id": "Q8qzbOzl0UMCFrc9",
+  "meta": {"instanceId": "YOUR_N8N_INSTANCE_ID"},
+  "id": "YOUR_WORKFLOW_ID",
   "tags": [
     {
       "updatedAt": "2025-09-30T20:07:15.640Z",
       "createdAt": "2025-09-30T20:07:15.640Z",
-      "id": "pvtKiAnRc9yZwli6",
-      "name": "Bem Cuidar"
+      "id": "YOUR_TAG_ID",
+      "name": "SUA_TAG"
     }
   ]
 }
