@@ -9,577 +9,69 @@
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
-      "position": [
-        -864,
-        -16
-      ],
-      "id": "72a12ac6-f28c-4191-9c12-3b864b350960",
+      "position": [-864, -16],
+      "id": "72a12ac6-f28c-4191-9c12-XXXXXX",
       "name": "Webhook",
-      "webhookId": "66019419-5d0b-403d-949e-de4fe3b5b15e"
+      "webhookId": "WEBHOOK_ID_REDACTED"
     },
+
     {
       "parameters": {
         "authentication": "oAuth2",
         "operation": "getAll",
-        "team": "9011131078",
-        "space": "90113859694",
-        "folder": "90113058799",
-        "list": "901111796328",
+        "team": "TEAM_ID",
+        "space": "SPACE_ID",
+        "folder": "FOLDER_ID",
+        "list": "LIST_ID",
         "filters": {}
       },
       "type": "n8n-nodes-base.clickUp",
       "typeVersion": 1,
-      "position": [
-        32,
-        -16
-      ],
-      "id": "d610d6ed-b987-432a-9dee-216d4ae357f4",
+      "position": [32, -16],
+      "id": "d610d6ed-b987-432a-9dee-XXXXXX",
       "name": "Get many tasks",
       "credentials": {
         "clickUpOAuth2Api": {
-          "id": "furydvZAXG5lUlHU",
-          "name": "IS/HPSM"
+          "id": "CREDENTIAL_ID",
+          "name": "CLICKUP_ACCOUNT"
         }
       }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "aae77ccd-a1ab-4cca-89a4-41dbb9f25257",
-              "name": "identificador",
-              "value": "={{ $json.body.paciente.id }}",
-              "type": "string"
-            },
-            {
-              "id": "4f06bd93-1bbb-431c-8219-ba6b22d7557b",
-              "name": "nome",
-              "value": "={{ $json.body.paciente.name }}",
-              "type": "string"
-            },
-            {
-              "id": "c83e0fe4-f1fe-4f16-be2e-a924968dfaa6",
-              "name": "data",
-              "value": "={{ $json.body.data }}",
-              "type": "string"
-            },
-            {
-              "id": "3b0614ed-0234-4f90-8942-2e086a04a916",
-              "name": "Serviços",
-              "value": "={{ $json.body.paciente.service }}",
-              "type": "array"
-            },
-            {
-              "id": "4289a6a1-74e1-4c03-ad02-1dad773b34b1",
-              "name": "User",
-              "value": "={{ $json.body.authorization }}",
-              "type": "string"
-            },
-            {
-              "id": "bd598724-8b4e-4342-ad0d-5c646351b280",
-              "name": "id_servico_escolhido",
-              "value": "={{ $json.body.tipoAtendimento.id }}",
-              "type": "string"
-            },
-            {
-              "id": "94bf673b-4fa4-4696-a154-3dcfba8d0ec7",
-              "name": "servico_escolhido",
-              "value": "={{ $json.body.tipoAtendimento.label }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {
-          "ignoreConversionErrors": false
-        }
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -640,
-        -16
-      ],
-      "id": "20588a9b-978c-412d-b5e7-b2bd595d2a05",
-      "name": "Edit Fields"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "136ad59a-f1ac-4923-ac3a-666518aee47e",
-              "leftValue": "={{ $node['Get many tasks'].json.custom_fields[1].value }}",
-              "rightValue": "={{ $('Edit Fields').item.json.identificador }}",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2.2,
-      "position": [
-        288,
-        -16
-      ],
-      "id": "dd9b12f6-c74b-45f4-a946-6ff8d289268d",
-      "name": "Filter",
-      "alwaysOutputData": true,
-      "onError": "continueRegularOutput"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "29465fa1-9131-4a87-9548-7e25d12a7179",
-              "leftValue": "={{ $json.id }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        528,
-        -16
-      ],
-      "id": "6245077b-d7fc-49be-9aa3-a447fd7bef48",
-      "name": "If"
-    },
-    {
-      "parameters": {
-        "authentication": "oAuth2",
-        "team": "9011131078",
-        "space": "90113859694",
-        "folder": "90113058799",
-        "list": "901111796328",
-        "name": "={{ $('Edit Fields').item.json.nome }}",
-        "additionalFields": {
-          "customFieldsJson": "=[\n  {\n    \"id\": \"9e6e1210-c850-4d96-a3a2-363ec598e37a\",\n    \"value\": \"{{ $('Edit Fields').item.json.identificador }}\"\n  },\n  {\n    \"id\": \"07c1a02b-d58f-4b48-908e-c6e0ae0148a5\",\n    \"value\": {{ JSON.stringify(\n  $json.custom_fields.find(field => field.id === \"07c1a02b-d58f-4b48-908e-c6e0ae0148a5\")?.value\n) }}\n  },\n  {\n    \"id\":  \"97c57f72-c862-4241-8e6c-735da5f66cc5\",\n    \"value\": \"{{ $('Name Field').item.json.name }}\"\n  }\n]"
-        }
-      },
-      "type": "n8n-nodes-base.clickUp",
-      "typeVersion": 1,
-      "position": [
-        992,
-        128
-      ],
-      "id": "abb03c26-afa8-461c-9a1b-888f842cb807",
-      "name": "Create a task",
-      "credentials": {
-        "clickUpOAuth2Api": {
-          "id": "furydvZAXG5lUlHU",
-          "name": "IS/HPSM"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "authentication": "oAuth2",
-        "team": "9011131078",
-        "space": "90113859694",
-        "folder": "90113058799",
-        "list": "901111796328",
-        "name": "={{ $('Edit Fields').item.json.data.toDateTime().format('dd/MM/yyyy') }}",
-        "additionalFields": {
-          "customFieldsJson": "=[\n  {\n    \"id\": \"97c57f72-c862-4241-8e6c-735da5f66cc5\",\n    \"value\": \"{{ $('Name Field').item.json.name }}\"\n  },\n  {\n    \"id\": \"07c1a02b-d58f-4b48-908e-c6e0ae0148a5\",\n    \"value\": [\"{{ $('Edit Fields').item.json.id_servico_escolhido }}\"]\n  }\n]",
-          "parentId": "={{ $json.id }}"
-        }
-      },
-      "type": "n8n-nodes-base.clickUp",
-      "typeVersion": 1,
-      "position": [
-        1184,
-        128
-      ],
-      "id": "4300249c-c8f3-4135-b60f-78074596923e",
-      "name": "Adiciona Subtask",
-      "credentials": {
-        "clickUpOAuth2Api": {
-          "id": "furydvZAXG5lUlHU",
-          "name": "IS/HPSM"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "https://api.clickup.com/api/v2/user",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "={{ $json.User }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -400,
-        -16
-      ],
-      "id": "886ee4f5-b95c-4416-9640-131f7e71695d",
-      "name": "Get Name User Click Up"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "a03eb982-55ad-4878-ba06-a0e67e3fbf60",
-              "name": "name",
-              "value": "={{ $json.user.username }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -192,
-        -16
-      ],
-      "id": "e2583372-86ff-4f56-916d-e10a4b153d9d",
-      "name": "Name Field"
-    },
-    {
-      "parameters": {
-        "authentication": "oAuth2",
-        "operation": "get",
-        "id": "={{ $('Edit Fields').item.json.identificador }}"
-      },
-      "type": "n8n-nodes-base.clickUp",
-      "typeVersion": 1,
-      "position": [
-        768,
-        128
-      ],
-      "id": "fcc063c4-2e9d-465c-91d0-1b84a9d47386",
-      "name": "Get a task",
-      "credentials": {
-        "clickUpOAuth2Api": {
-          "id": "furydvZAXG5lUlHU",
-          "name": "IS/HPSM"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "authentication": "oAuth2",
-        "operation": "get",
-        "id": "={{ $json.id }}",
-        "includeSubtasks": true
-      },
-      "type": "n8n-nodes-base.clickUp",
-      "typeVersion": 1,
-      "position": [
-        784,
-        -112
-      ],
-      "id": "70a38789-e4ac-47d8-bd33-c03a0999a257",
-      "name": "Busca Presença",
-      "credentials": {
-        "clickUpOAuth2Api": {
-          "id": "furydvZAXG5lUlHU",
-          "name": "IS/HPSM"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "fa90cfc6-6f79-4e16-8a8e-14202e4f7abe",
-              "leftValue": "={{ \n  $json.subtasks?.some(item => \n    item.name === $('Edit Fields').item.json.data.toDateTime().format('dd/MM/yyyy')\n  ) || false \n}}",
-              "rightValue": "={{ $('Edit Fields').item.json.data.toDateTime().format('dd/MM/yyyy') }}",
-              "operator": {
-                "type": "boolean",
-                "operation": "true",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        976,
-        -112
-      ],
-      "id": "787f5c52-e38d-4e23-a343-1625331841b2",
-      "name": "Já existe a presença?"
-    },
-    {
-      "parameters": {
-        "authentication": "oAuth2",
-        "team": "9011131078",
-        "space": "90113859694",
-        "folder": "90113058799",
-        "list": "901111796328",
-        "name": "={{ $('Edit Fields').item.json.data.toDateTime().format('dd/MM/yyyy') }}",
-        "additionalFields": {
-          "customFieldsJson": "=[\n  {\n    \"id\": \"97c57f72-c862-4241-8e6c-735da5f66cc5\",\n    \"value\": \"{{ $('Name Field').item.json.name }}\"\n  },\n  {\n    \"id\": \"07c1a02b-d58f-4b48-908e-c6e0ae0148a5\",\n    \"value\": [\"{{ $('Edit Fields').item.json.id_servico_escolhido }}\"]\n  }\n]",
-          "parentId": "={{ $json.id }}"
-        }
-      },
-      "type": "n8n-nodes-base.clickUp",
-      "typeVersion": 1,
-      "position": [
-        1312,
-        -32
-      ],
-      "id": "efa418f7-896e-41da-82bf-91c83a2167a7",
-      "name": "Adiciona Presença Nova",
-      "credentials": {
-        "clickUpOAuth2Api": {
-          "id": "furydvZAXG5lUlHU",
-          "name": "IS/HPSM"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "fieldToSplitOut": "subtasks",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.splitOut",
-      "typeVersion": 1,
-      "position": [
-        1184,
-        -208
-      ],
-      "id": "a2addaaf-8b88-4660-9949-b75d3d7ceffb",
-      "name": "Split Out"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "f741718d-e9f9-47b0-9d8c-2152d68f7efd",
-              "leftValue": "={{ $json.name }}",
-              "rightValue": "={{$('Edit Fields').item.json.data.toDateTime().format('dd/MM/yyyy')  }}",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2.2,
-      "position": [
-        1360,
-        -208
-      ],
-      "id": "ab9d00a3-1429-45ee-a155-d3c9e0dbb2ec",
-      "name": "Filtra Presença correta"
-    },
-    {
-      "parameters": {
-        "authentication": "oAuth2",
-        "operation": "setCustomField",
-        "task": "={{ $('Edit Fields1').item.json.Tarefa_ID }}",
-        "field": "=07c1a02b-d58f-4b48-908e-c6e0ae0148a5",
-        "value": "={{ $json.resultado }}"
-      },
-      "type": "n8n-nodes-base.clickUp",
-      "typeVersion": 1,
-      "position": [
-        2096,
-        -208
-      ],
-      "id": "0801fdf1-19a5-43aa-bd4f-80ee65f562c6",
-      "name": "Edita Presença Existente",
-      "credentials": {
-        "clickUpOAuth2Api": {
-          "id": "furydvZAXG5lUlHU",
-          "name": "IS/HPSM"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "authentication": "oAuth2",
-        "operation": "get",
-        "id": "={{ $json.id }}"
-      },
-      "type": "n8n-nodes-base.clickUp",
-      "typeVersion": 1,
-      "position": [
-        1568,
-        -208
-      ],
-      "id": "ba20c5d4-c79c-4c89-863d-843dd1cacd28",
-      "name": "Detalha presença existente",
-      "credentials": {
-        "clickUpOAuth2Api": {
-          "id": "furydvZAXG5lUlHU",
-          "name": "IS/HPSM"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "3d74a3a4-32e3-47b5-a3be-76d243eb492a",
-              "name": "Serviços_Existentes",
-              "value": "={{ $json.custom_fields.find(field => field.id === \"07c1a02b-d58f-4b48-908e-c6e0ae0148a5\")?.value }}",
-              "type": "array"
-            },
-            {
-              "id": "56dc1494-01d2-4b3e-beae-362508c405c7",
-              "name": "Servico_a_adicionar",
-              "value": "={{ $('Edit Fields').item.json['Serviços'][0].id }}",
-              "type": "string"
-            },
-            {
-              "id": "b1e6af21-6ee9-4a09-9d65-ea0b36d13ddf",
-              "name": "Tarefa_ID",
-              "value": "={{ $json.id }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1728,
-        -208
-      ],
-      "id": "3602225f-9022-4fa8-acf4-3d46841870fa",
-      "name": "Edit Fields1"
-    },
-    {
-      "parameters": {
-        "jsCode": "return [\n  {\n    json: {\n      resultado: Array.from(new Set([\n        ...($input.first().json['Serviços_Existentes'] || []),\n        $input.first().json.Servico_a_adicionar\n      ]))\n    }\n  }\n];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        1888,
-        -208
-      ],
-      "id": "68120af3-8396-4441-96b9-94f0a960f394",
-      "name": "Add to array"
     }
   ],
+
   "pinData": {
     "Webhook": [
       {
         "json": {
           "headers": {
-            "host": "n8n.simplificagest.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
-            "content-length": "451",
-            "accept": "*/*",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "accept-language": "pt-BR,pt;q=0.9",
-            "content-type": "application/json",
-            "origin": "https://hpsm-checkin.simplificagest.com",
-            "priority": "u=1, i",
-            "referer": "https://hpsm-checkin.simplificagest.com/",
-            "sec-ch-ua": "\"Not:A-Brand\";v=\"99\", \"Google Chrome\";v=\"145\", \"Chromium\";v=\"145\"",
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "\"Windows\"",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "same-site",
-            "x-forwarded-for": "191.22.36.235",
-            "x-forwarded-host": "n8n.simplificagest.com",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "fb4b1dc5bf1a",
-            "x-real-ip": "191.22.36.235"
+            "host": "REDACTED_DOMAIN",
+            "x-forwarded-for": "REDACTED_IP"
           },
-          "params": {},
-          "query": {},
           "body": {
             "paciente": {
-              "id": "868gc8paf",
-              "name": "Caio Filipi Camargo Gomes",
+              "id": "PATIENT_ID",
+              "name": "PATIENT_NAME",
               "service": [
                 {
-                  "id": "a7c1d0f0-90fd-4b5d-a612-a0b4db47f215",
-                  "label": "HOSPITAL DIA"
+                  "id": "SERVICE_ID",
+                  "label": "SERVICE_NAME"
                 }
               ]
             },
             "tipoAtendimento": {
-              "id": "a7c1d0f0-90fd-4b5d-a612-a0b4db47f215",
-              "label": "HOSPITAL DIA"
+              "id": "SERVICE_ID",
+              "label": "SERVICE_NAME"
             },
-            "data": "2026-03-18",
-            "timestamp": "2026-03-18T17:27:12.738Z",
-            "authorization": "Bearer 266604704_6e1d22694881c517c76af5bb7a87caa04ea4e026374388d45c92d9fe82e1368b",
-            "usuarioAutenticado": {
-              "id": null,
-              "name": null,
-              "email": null
-            }
+            "data": "YYYY-MM-DD",
+            "timestamp": "TIMESTAMP",
+            "authorization": "Bearer REDACTED_TOKEN"
           },
-          "webhookUrl": "https://n8n.simplificagest.com/webhook/checkin-hpsm",
-          "executionMode": "production"
+          "webhookUrl": "https://REDACTED/webhook/checkin-hpsm"
         }
       }
     ]
   },
+
   "connections": {
     "Webhook": {
       "main": [
@@ -591,203 +83,12 @@
           }
         ]
       ]
-    },
-    "Get many tasks": {
-      "main": [
-        [
-          {
-            "node": "Filter",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Edit Fields": {
-      "main": [
-        [
-          {
-            "node": "Get Name User Click Up",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filter": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "Busca Presença",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get a task",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create a task": {
-      "main": [
-        [
-          {
-            "node": "Adiciona Subtask",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Name User Click Up": {
-      "main": [
-        [
-          {
-            "node": "Name Field",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Name Field": {
-      "main": [
-        [
-          {
-            "node": "Get many tasks",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get a task": {
-      "main": [
-        [
-          {
-            "node": "Create a task",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Busca Presença": {
-      "main": [
-        [
-          {
-            "node": "Já existe a presença?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Já existe a presença?": {
-      "main": [
-        [
-          {
-            "node": "Split Out",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Adiciona Presença Nova",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Split Out": {
-      "main": [
-        [
-          {
-            "node": "Filtra Presença correta",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filtra Presença correta": {
-      "main": [
-        [
-          {
-            "node": "Detalha presença existente",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Detalha presença existente": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Edit Fields1": {
-      "main": [
-        [
-          {
-            "node": "Add to array",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Add to array": {
-      "main": [
-        [
-          {
-            "node": "Edita Presença Existente",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
+
   "active": true,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "60cb1b94-1f39-4309-b171-81355a4b906a",
-  "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "ed448110c2f52335930f4a47b55f0143ece4c7ed5b8e212395558525801fe931"
-  },
-  "id": "wGAycHXeOTqX5Urj",
-  "tags": [
-    {
-      "updatedAt": "2025-07-26T18:07:48.515Z",
-      "createdAt": "2025-07-26T18:07:48.515Z",
-      "id": "W4Rm24E5nSpi4ue9",
-      "name": "IS"
-    }
-  ]
+  "id": "WORKFLOW_ID"
 }
